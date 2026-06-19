@@ -390,9 +390,22 @@ section{padding:104px 0;position:relative}
 .faq-item.open .faq-a{max-height:400px}
 .faq-a p{padding:0 24px 20px;font-size:14px;line-height:1.7;color:var(--text)}
 
+/* BOTÃO FIXO FLUTUANTE (CTA) */
+#floatCta{
+  position:fixed;left:50%;bottom:18px;
+  width:min(440px,calc(100% - 28px));
+  transform:translateX(-50%) translateY(160%);
+  opacity:0;pointer-events:none;z-index:200;
+  transition:transform .45s var(--ease),opacity .35s var(--ease);
+}
+#floatCta.show{transform:translateX(-50%) translateY(0);opacity:1;pointer-events:auto}
+#floatCta .btn{box-shadow:0 12px 40px rgba(0,0,0,.55),0 6px 28px rgba(255,176,32,.4)}
+
 @media(max-width:768px){
   .qualifica-grid{grid-template-columns:1fr}
   .transform-grid{grid-template-columns:1fr}
+  #floatCta{bottom:12px}
+  #floatCta .btn{padding:16px 24px;font-size:14px}
 }
 
 /* FOOTER */
@@ -928,6 +941,13 @@ footer{padding:40px 24px;text-align:center;border-top:1px solid var(--line);font
   <span style="margin-top:6px;display:inline-block">Este produto é distribuído pela Plataforma SOS Método. Resultados podem variar de acordo com o esforço e dedicação de cada aluno.</span>
 </footer>
 
+<!-- BOTÃO FIXO FLUTUANTE -->
+<div id="floatCta">
+  <button class="btn gold" onclick="document.getElementById('comprar').scrollIntoView({behavior:'smooth',block:'center'})">
+    QUERO GARANTIR MINHA VAGA →
+  </button>
+</div>
+
 <script>
 /* ═══════════════════════════════════════
    MÓDULOS DO CURSO (1 a 11 enviados)
@@ -1040,12 +1060,43 @@ function initReveal(){
 }
 
 /* ═══════════════════════════════════════
+   BOTÃO FIXO FLUTUANTE (CTA)
+   Aparece após o hero e some quando o botão de compra está na tela
+═══════════════════════════════════════ */
+function initFloatCta(){
+  var floatCta = document.getElementById('floatCta');
+  var heroEl = document.getElementById('hero');
+  var buyEl = document.getElementById('comprar');
+  if(!floatCta) return;
+  var buyVisible = false;
+
+  if('IntersectionObserver' in window && buyEl){
+    new IntersectionObserver(function(entries){
+      buyVisible = entries[0].isIntersecting;
+      update();
+    }, {threshold:0}).observe(buyEl);
+  }
+
+  function update(){
+    var limite = heroEl ? heroEl.offsetHeight * 0.6 : 500;
+    var passouHero = window.scrollY > limite;
+    if(passouHero && !buyVisible) floatCta.classList.add('show');
+    else floatCta.classList.remove('show');
+  }
+
+  window.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('resize', update);
+  update();
+}
+
+/* ═══════════════════════════════════════
    INICIALIZAÇÃO
 ═══════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', function(){
   renderCurriculum();
   startCountdown(5);
   initReveal();
+  initFloatCta();
 });
 </script>
 
