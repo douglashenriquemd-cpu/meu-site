@@ -292,6 +292,8 @@ section{padding:104px 0;position:relative}
 .prova-card:hover{border-color:rgba(45,224,138,.3);transform:translateY(-3px)}
 .prova-video{margin:0 0 20px;border-radius:var(--r-md);overflow:hidden;background:#000;line-height:0}
 .prova-video vturb-smartplayer{display:block;width:100%}
+/* vídeo vertical (gravado em pé): limita a largura pra altura casar com os horizontais */
+.prova-video.vertical{max-width:170px;margin-left:auto;margin-right:auto}
 .prova-card .name{font-weight:700;color:var(--white);font-size:15.5px;margin-bottom:2px}
 .prova-card .location{font-size:12px;color:var(--text-dim);margin-bottom:18px;font-family:'Space Grotesk',monospace}
 .prova-card .text{font-size:14.5px;line-height:1.75;color:var(--text)}
@@ -612,7 +614,7 @@ footer{padding:40px 24px;text-align:center;border-top:1px solid var(--line);font
     </div>
     <div class="provas-grid">
       <div class="prova-card reveal">
-        <div class="prova-video"><vturb-smartplayer id="vid-6a3588c9de7f79e0ec9dd988" style="display:block;margin:0 auto;width:100%"></vturb-smartplayer></div>
+        <div class="prova-video vertical"><vturb-smartplayer id="vid-6a3588c9de7f79e0ec9dd988" style="display:block;margin:0 auto;width:100%"></vturb-smartplayer></div>
         <div class="name">Karen Correa — 28 anos</div>
         <div class="location">Brasil</div>
         <p class="text">Saiu do emprego formal, apostou no SOS Método e transformou completamente a vida. Hoje sustenta a família com a higienização, com liberdade de tempo e estrutura profissional.</p>
