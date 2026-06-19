@@ -290,7 +290,8 @@ section{padding:104px 0;position:relative}
 #prova .provas-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:56px}
 .prova-card{background:var(--ink2);border:1px solid var(--line);border-radius:var(--r-lg);padding:30px;position:relative;transition:border-color .25s,transform .25s}
 .prova-card:hover{border-color:rgba(45,224,138,.3);transform:translateY(-3px)}
-.prova-card::before{content:'"';position:absolute;top:18px;right:22px;font-size:64px;font-family:Georgia,serif;color:rgba(0,229,255,.08);line-height:1}
+.prova-video{margin:0 0 20px;border-radius:var(--r-md);overflow:hidden;background:#000;line-height:0}
+.prova-video vturb-smartplayer{display:block;width:100%}
 .prova-card .name{font-weight:700;color:var(--white);font-size:15.5px;margin-bottom:2px}
 .prova-card .location{font-size:12px;color:var(--text-dim);margin-bottom:18px;font-family:'Space Grotesk',monospace}
 .prova-card .text{font-size:14.5px;line-height:1.75;color:var(--text)}
@@ -611,24 +612,28 @@ footer{padding:40px 24px;text-align:center;border-top:1px solid var(--line);font
     </div>
     <div class="provas-grid">
       <div class="prova-card reveal">
+        <div class="prova-video"><vturb-smartplayer id="vid-6a3588c9de7f79e0ec9dd988" style="display:block;margin:0 auto;width:100%"></vturb-smartplayer></div>
         <div class="name">Karen Correa — 28 anos</div>
         <div class="location">Brasil</div>
         <p class="text">Saiu do emprego formal, apostou no SOS Método e transformou completamente a vida. Hoje sustenta a família com a higienização, com liberdade de tempo e estrutura profissional.</p>
         <span class="objecao">✓ Funciona para mulheres</span>
       </div>
       <div class="prova-card reveal">
+        <div class="prova-video"><vturb-smartplayer id="vid-6a3588ece3a27492ce2372e7" style="display:block;margin:0 auto;width:100%"></vturb-smartplayer></div>
         <div class="name">Angélica & Bruno — Baclean Higienização</div>
         <div class="location">Brasil</div>
         <p class="text">Largaram os empregos formais e, em apenas 2 meses, vivem só da higienização — com ganhos maiores e a empresa em destaque no mercado.</p>
         <span class="objecao">✓ Resultado em menos de 60 dias</span>
       </div>
       <div class="prova-card reveal">
+        <div class="prova-video"><vturb-smartplayer id="vid-6a358906de7f79e0ec9ddad8" style="display:block;margin:0 auto;width:100%"></vturb-smartplayer></div>
         <div class="name">Marcos — Bragança Paulista</div>
         <div class="location">Interior de SP</div>
         <p class="text">De assalariado a dono do próprio destino. Com a higienização, conquistou a casa própria e alcançou liberdade financeira — sem precisar de cidade grande.</p>
         <span class="objecao">✓ Funciona no interior</span>
       </div>
       <div class="prova-card reveal">
+        <div class="prova-video"><vturb-smartplayer id="vid-6a35891da01c98382038ce56" style="display:block;margin:0 auto;width:100%"></vturb-smartplayer></div>
         <div class="name">John Pablo — JS Clean</div>
         <div class="location">Brasil</div>
         <p class="text">Saiu das dívidas na pandemia para se tornar empresário de sucesso. Hoje tem casa, carro, clientes fiéis e qualidade de vida para a família.</p>
@@ -867,6 +872,12 @@ document.addEventListener('DOMContentLoaded', function(){
   initReveal();
 });
 </script>
+
+<!-- VTurb players (depoimentos) -->
+<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/f04f0c1f-d8c5-4ccf-aa51-6f81483a882e/players/6a3588c9de7f79e0ec9dd988/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
+<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/f04f0c1f-d8c5-4ccf-aa51-6f81483a882e/players/6a3588ece3a27492ce2372e7/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
+<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/f04f0c1f-d8c5-4ccf-aa51-6f81483a882e/players/6a358906de7f79e0ec9ddad8/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
+<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/f04f0c1f-d8c5-4ccf-aa51-6f81483a882e/players/6a35891da01c98382038ce56/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
 
 </body>
 </html>
