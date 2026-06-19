@@ -343,6 +343,58 @@ section{padding:104px 0;position:relative}
 .garantia-text h2{margin-bottom:14px;color:var(--green)}
 .garantia-text p{font-size:15.5px;line-height:1.75}
 
+/* QUALIFICA — é para você / não é para você */
+#qualifica{background:var(--void)}
+.qualifica-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:56px}
+.qual-card{background:var(--ink2);border:1px solid var(--line);border-radius:var(--r-lg);padding:34px 32px;position:relative;overflow:hidden}
+.qual-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
+.qual-card.yes::before{background:var(--green)}
+.qual-card.no::before{background:#ff5470}
+.qual-head{display:flex;align-items:center;gap:12px;margin-bottom:22px;font-size:18px;font-weight:800;color:var(--white)}
+.qual-head .ic{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.qual-card.yes .ic{background:var(--green-dim);color:var(--green)}
+.qual-card.no .ic{background:rgba(255,84,112,.12);color:#ff5470}
+.qual-list{list-style:none;display:flex;flex-direction:column;gap:14px}
+.qual-list li{display:flex;align-items:flex-start;gap:11px;font-size:14.5px;line-height:1.55;color:var(--text)}
+.qual-list .mk{flex-shrink:0;margin-top:1px;font-weight:700}
+.qual-card.yes .mk{color:var(--green)}
+.qual-card.no .mk{color:#ff5470}
+
+/* TRANSFORMACAO — antes/depois */
+#transformacao{background:var(--ink);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.transform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+.ba-card{background:var(--ink2);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;transition:border-color .25s,transform .25s}
+.ba-card:hover{border-color:rgba(0,229,255,.35);transform:translateY(-3px)}
+.ba-pair{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line)}
+.ba-slot{position:relative;aspect-ratio:3/4;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--text-dim);text-align:center;padding:10px}
+.ba-slot .ba-ic{font-size:26px;opacity:.5}
+.ba-slot .ba-txt{font-family:'Space Grotesk',monospace;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase}
+.ba-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba-tag{position:absolute;top:10px;left:10px;z-index:2;font-family:'Space Grotesk',monospace;font-size:10px;font-weight:700;letter-spacing:.05em;padding:3px 9px;border-radius:5px}
+.ba-tag.antes{background:rgba(255,84,112,.18);color:#ff8095;border:1px solid rgba(255,84,112,.4)}
+.ba-tag.depois{background:var(--green-dim);color:var(--green);border:1px solid rgba(45,224,138,.4)}
+.ba-caption{padding:16px 18px;text-align:center;font-size:13.5px;color:var(--white);font-weight:600}
+.ba-caption span{color:var(--aqua)}
+.transform-note{text-align:center;margin-top:28px;font-family:'Space Grotesk',monospace;font-size:12.5px;color:var(--text-dim)}
+
+/* FAQ */
+#faq{background:var(--void)}
+.faq-list{max-width:780px;margin:48px auto 0}
+.faq-item{background:var(--ink2);border:1px solid var(--line);border-radius:var(--r-md);margin-bottom:10px;overflow:hidden;transition:border-color .25s}
+.faq-item:hover{border-color:rgba(0,229,255,.3)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;cursor:pointer;user-select:none;font-size:15px;font-weight:600;color:var(--white)}
+.faq-q:hover{background:rgba(0,229,255,.03)}
+.faq-q .faq-arrow{color:var(--aqua);flex-shrink:0;transition:transform .3s;font-size:12px}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-item.open .faq-a{max-height:400px}
+.faq-a p{padding:0 24px 20px;font-size:14px;line-height:1.7;color:var(--text)}
+
+@media(max-width:768px){
+  .qualifica-grid{grid-template-columns:1fr}
+  .transform-grid{grid-template-columns:1fr}
+}
+
 /* FOOTER */
 footer{padding:40px 24px;text-align:center;border-top:1px solid var(--line);font-size:12px;color:var(--text-dim);font-family:'Space Grotesk',monospace;background:var(--void)}
 
@@ -508,6 +560,38 @@ footer{padding:40px 24px;text-align:center;border-top:1px solid var(--line);font
   </div>
 </section>
 
+<!-- QUALIFICA -->
+<section id="qualifica">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="eyebrow" style="justify-content:center">Antes de continuar</div>
+      <h2>Esse método é pra você?</h2>
+    </div>
+    <div class="qualifica-grid">
+      <div class="qual-card yes reveal">
+        <div class="qual-head"><span class="ic">✓</span> É pra você se...</div>
+        <ul class="qual-list">
+          <li><span class="mk">✓</span> Você está cansado do salário travado e quer aumentar sua renda</li>
+          <li><span class="mk">✓</span> Quer uma renda extra nos fins de semana, sem largar o emprego atual</li>
+          <li><span class="mk">✓</span> Quer começar do zero, mesmo sem nenhuma experiência anterior</li>
+          <li><span class="mk">✓</span> Tem pouco pra investir — o equipamento cabe no porta-malas do carro</li>
+          <li><span class="mk">✓</span> Quer liberdade de horário e ser dono do próprio negócio</li>
+          <li><span class="mk">✓</span> Quer um negócio que cresce (sofá hoje, colchão e automotivo amanhã)</li>
+        </ul>
+      </div>
+      <div class="qual-card no reveal">
+        <div class="qual-head"><span class="ic">✕</span> NÃO é pra você se...</div>
+        <ul class="qual-list">
+          <li><span class="mk">✕</span> Você procura dinheiro fácil, sem precisar trabalhar</li>
+          <li><span class="mk">✕</span> Não está disposto a aplicar na prática o que vai aprender</li>
+          <li><span class="mk">✕</span> Acha que vai faturar R$ 10 mil já no primeiro mês (seja realista)</li>
+          <li><span class="mk">✕</span> Só quer "dar uma olhada" e nunca vai colocar a mão na massa</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- STORY -->
 <section id="story">
   <div class="wrap">
@@ -602,6 +686,40 @@ footer{padding:40px 24px;text-align:center;border-top:1px solid var(--line);font
       </button>
       <div class="btn-sub">12x de R$ 20,47 · <span>ou R$ 197,90 à vista</span></div>
     </div>
+  </div>
+</section>
+
+<!-- TRANSFORMACAO (Antes/Depois) -->
+<section id="transformacao">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="eyebrow green" style="justify-content:center">Resultado real</div>
+      <h2>Veja a transformação que você vai fazer</h2>
+    </div>
+    <div class="transform-grid">
+      <div class="ba-card reveal">
+        <div class="ba-pair">
+          <div class="ba-slot"><span class="ba-tag antes">ANTES</span><span class="ba-ic">📷</span><span class="ba-txt">Foto antes aqui</span></div>
+          <div class="ba-slot"><span class="ba-tag depois">DEPOIS</span><span class="ba-ic">📷</span><span class="ba-txt">Foto depois aqui</span></div>
+        </div>
+        <div class="ba-caption">Sofá encardido <span>→</span> Como novo</div>
+      </div>
+      <div class="ba-card reveal">
+        <div class="ba-pair">
+          <div class="ba-slot"><span class="ba-tag antes">ANTES</span><span class="ba-ic">📷</span><span class="ba-txt">Foto antes aqui</span></div>
+          <div class="ba-slot"><span class="ba-tag depois">DEPOIS</span><span class="ba-ic">📷</span><span class="ba-txt">Foto depois aqui</span></div>
+        </div>
+        <div class="ba-caption">Colchão manchado <span>→</span> Higienizado</div>
+      </div>
+      <div class="ba-card reveal">
+        <div class="ba-pair">
+          <div class="ba-slot"><span class="ba-tag antes">ANTES</span><span class="ba-ic">📷</span><span class="ba-txt">Foto antes aqui</span></div>
+          <div class="ba-slot"><span class="ba-tag depois">DEPOIS</span><span class="ba-ic">📷</span><span class="ba-txt">Foto depois aqui</span></div>
+        </div>
+        <div class="ba-caption">Banco automotivo <span>→</span> Renovado</div>
+      </div>
+    </div>
+    <div class="transform-note">📌 Espaços reservados — envie suas fotos de antes/depois e eu coloco aqui.</div>
   </div>
 </section>
 
@@ -752,6 +870,58 @@ footer{padding:40px 24px;text-align:center;border-top:1px solid var(--line);font
   </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="eyebrow" style="justify-content:center">Tire suas dúvidas</div>
+      <h2>Perguntas frequentes</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Eu nunca trabalhei com isso. Consigo aprender? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><p>Sim! O método foi feito pra quem começa do zero. Você aprende do básico ao avançado, passo a passo, com vídeos práticos. Mais de 20 mil alunos começaram sem nenhuma experiência anterior.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Preciso de muito dinheiro pra começar? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><p>Não. O investimento inicial em equipamento é baixo e cabe no porta-malas do carro. Dá pra começar pequeno e ir crescendo com o dinheiro dos primeiros serviços. Inclusive você tem suporte individual pra comprar os equipamentos certos.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Quanto tempo leva pra fazer um serviço? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><p>A higienização de um sofá de 3 lugares leva menos de uma hora. Com a prática, você consegue fazer mais de um serviço por dia tranquilamente.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Quanto posso cobrar pelo serviço? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><p>Um sofá de 3 lugares costuma render de R$ 250 a R$ 450. O curso ensina exatamente como precificar cada tipo de serviço, com planilhas prontas, pra você nunca cobrar barato por não saber o valor.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Tem garantia? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><p>Sim. Você tem 7 dias de garantia incondicional. Se por qualquer motivo não ficar satisfeito, devolvemos 100% do seu dinheiro — sem perguntas e sem burocracia.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Por quanto tempo tenho acesso? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><p>O acesso é vitalício. Você estuda no seu ritmo e revê as aulas quantas vezes quiser, para sempre — incluindo as atualizações futuras do método.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Recebo certificado? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><p>Sim, ao concluir você recebe um certificado de conclusão reconhecido, que ajuda a passar mais confiança para os seus clientes.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Consigo fazer em casa ou preciso de estrutura? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><p>Você atende na casa do cliente — não precisa de ponto comercial. O equipamento é portátil e vai com você no carro. É só chegar, fazer o serviço e receber.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Como recebo o acesso depois de comprar? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><p>O acesso é liberado na hora, de forma automática, assim que o pagamento é confirmado. Você recebe tudo no seu e-mail e já pode começar a assistir.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">E se eu tiver dúvidas durante o curso? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><p>Você não fica sozinho. Tem suporte individual pelo WhatsApp para tirar dúvidas sobre as técnicas e também sobre a compra dos equipamentos certos.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   © 2026 SOS Método — Todos os direitos reservados.<br>
@@ -814,6 +984,10 @@ function renderCurriculum(){
 
 function toggleModule(head){
   head.parentElement.classList.toggle('open');
+}
+
+function toggleFaq(q){
+  q.parentElement.classList.toggle('open');
 }
 
 function toggleGrade(){
