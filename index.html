@@ -1149,6 +1149,27 @@ function initLazyVideos(){
 }
 
 /* ═══════════════════════════════════════
+   BACK REDIRECT: roleta de desconto (/back)
+═══════════════════════════════════════ */
+function initExitRedirect(){
+  if(sessionStorage.getItem('sosBackSeen')) return;
+  var fired = false;
+  function go(){
+    if(fired || sessionStorage.getItem('sosBackSeen')) return;
+    fired = true;
+    sessionStorage.setItem('sosBackSeen','1');
+    window.location.href = 'back/';
+  }
+  /* Botão "voltar" do navegador — funciona no celular e no PC */
+  try{ history.pushState(null, document.title, location.href); }catch(e){}
+  window.addEventListener('popstate', go);
+  /* Mouse indo fechar a aba (somente desktop) */
+  document.addEventListener('mouseout', function(e){
+    if(e.clientY <= 0 && !e.relatedTarget){ go(); }
+  });
+}
+
+/* ═══════════════════════════════════════
    INICIALIZAÇÃO
 ═══════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', function(){
@@ -1158,6 +1179,7 @@ document.addEventListener('DOMContentLoaded', function(){
   initFloatCta();
   initVideoAlt();
   initLazyVideos();
+  initExitRedirect();
 });
 </script>
 
