@@ -1157,6 +1157,44 @@ function initLazyVideos(){
 }
 
 /* ═══════════════════════════════════════
+   RASTREIO: captura UTMs e repassa ao checkout
+═══════════════════════════════════════ */
+var TRACK_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_id','src','sck','fbclid','gclid','ttclid','xcod'];
+function getTrackingParams(){
+  var out = {};
+  try{
+    var saved = JSON.parse(sessionStorage.getItem('sosUtms') || '{}');
+    Object.keys(saved).forEach(function(k){ out[k] = saved[k]; });
+  }catch(e){}
+  var cur = new URLSearchParams(window.location.search);
+  TRACK_KEYS.forEach(function(k){ if(cur.has(k)) out[k] = cur.get(k); });
+  try{ sessionStorage.setItem('sosUtms', JSON.stringify(out)); }catch(e){}
+  return out;
+}
+function buildCheckoutUrl(base){
+  try{
+    var url = new URL(base);
+    var p = getTrackingParams();
+    Object.keys(p).forEach(function(k){ url.searchParams.set(k, p[k]); });
+    return url.toString();
+  }catch(e){ return base; }
+}
+function trackingQuery(){
+  var p = getTrackingParams(), parts = [];
+  Object.keys(p).forEach(function(k){ parts.push(encodeURIComponent(k)+'='+encodeURIComponent(p[k])); });
+  return parts.length ? ('?'+parts.join('&')) : '';
+}
+function initCheckoutTracking(){
+  getTrackingParams(); /* garante que as UTMs da URL sejam salvas */
+  var btn = document.getElementById('comprar');
+  if(btn){
+    btn.onclick = function(){
+      window.open(buildCheckoutUrl('https://pay.kiwify.com.br/llBxiaL'), '_blank');
+    };
+  }
+}
+
+/* ═══════════════════════════════════════
    BACK REDIRECT: roleta de desconto (/back)
 ═══════════════════════════════════════ */
 function initExitRedirect(){
@@ -1166,7 +1204,7 @@ function initExitRedirect(){
     if(fired || sessionStorage.getItem('sosBackSeen')) return;
     fired = true;
     sessionStorage.setItem('sosBackSeen','1');
-    window.location.href = 'back/';
+    window.location.href = 'back/' + trackingQuery();
   }
   /* Botão "voltar" do navegador — funciona no celular e no PC */
   try{ history.pushState(null, document.title, location.href); }catch(e){}
@@ -1187,6 +1225,7 @@ document.addEventListener('DOMContentLoaded', function(){
   initFloatCta();
   initVideoAlt();
   initLazyVideos();
+  initCheckoutTracking();
   initExitRedirect();
 });
 </script>

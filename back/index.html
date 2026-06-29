@@ -320,6 +320,34 @@ h1{
   <canvas id="confetti"></canvas>
 
 <script>
+/* ===== RASTREIO: captura UTMs e anexa nos botões de checkout ===== */
+var TRACK_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_id','src','sck','fbclid','gclid','ttclid','xcod'];
+function getTrackingParams(){
+  var out = {};
+  try{
+    var saved = JSON.parse(sessionStorage.getItem('sosUtms') || '{}');
+    Object.keys(saved).forEach(function(k){ out[k] = saved[k]; });
+  }catch(e){}
+  var cur = new URLSearchParams(window.location.search);
+  TRACK_KEYS.forEach(function(k){ if(cur.has(k)) out[k] = cur.get(k); });
+  try{ sessionStorage.setItem('sosUtms', JSON.stringify(out)); }catch(e){}
+  return out;
+}
+function buildCheckoutUrl(base){
+  try{
+    var url = new URL(base);
+    var p = getTrackingParams();
+    Object.keys(p).forEach(function(k){ url.searchParams.set(k, p[k]); });
+    return url.toString();
+  }catch(e){ return base; }
+}
+(function initCheckoutTracking(){
+  var links = document.querySelectorAll('a[href*="pay.kiwify.com.br"]');
+  for(var i=0;i<links.length;i++){
+    links[i].href = buildCheckoutUrl(links[i].getAttribute('href'));
+  }
+})();
+
 /* ===== Monta as legendas da roleta (8 fatias de 45°) ===== */
 var SEGMENTS = [
   {t:'R$ 50 OFF', dark:false}, {t:'5% OFF', dark:false}, {t:'Nada 😅', dark:false},
