@@ -29,16 +29,22 @@ src="https://www.facebook.com/tr?id=424747819483688&ev=PageView&noscript=1"
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
 <style>
 :root{
-  --void:#05070b; --ink:#0a0e16; --ink2:#10151f; --line:#1f2636;
+  --void:#05070b; --ink:#0a0e16; --ink2:#10151f; --ink3:#161c29; --line:#1f2636;
   --text:#aab4c8; --text-dim:#8b98b4; --white:#f3f6fb;
   --aqua:#00e5ff; --aqua-deep:#00a8c4; --aqua-glow:rgba(0,229,255,.35);
   --gold:#ffb020; --gold-deep:#d98c0a; --green:#2de08a;
+  --ease:cubic-bezier(.16,1,.3,1);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--void);color:var(--text);font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
-body{
+body{overflow-x:hidden;position:relative}
+.hl{color:var(--aqua)}
+s{color:var(--text-dim)}
+
+/* ════════ TELA 1: ROLETA ════════ */
+#rouletteView{
   min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:34px 20px 48px;overflow-x:hidden;position:relative;
+  text-align:center;padding:34px 20px 48px;
   background:
     radial-gradient(1200px 600px at 50% -8%, rgba(0,229,255,.10), transparent 60%),
     radial-gradient(900px 500px at 50% 110%, rgba(255,176,32,.07), transparent 60%),
@@ -52,13 +58,9 @@ body{
 .kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--aqua);box-shadow:0 0 10px var(--aqua)}
 h1{
   font-size:clamp(22px,5.4vw,40px);line-height:1.2;font-weight:900;color:var(--white);
-  max-width:620px;margin:0 auto 6px;letter-spacing:-.01em;
-  overflow-wrap:break-word;word-wrap:break-word;
+  max-width:620px;margin:0 auto 6px;letter-spacing:-.01em;overflow-wrap:break-word;
 }
-h1 .hl{color:var(--aqua)}
 .sub{font-size:clamp(14px,3.6vw,16px);color:var(--text-dim);max-width:460px;margin:14px auto 0}
-
-/* ===== ROLETA ===== */
 .wheel-wrap{position:relative;width:min(86vw,340px);aspect-ratio:1/1;margin:34px auto 8px}
 .pointer{
   position:absolute;top:-6px;left:50%;transform:translateX(-50%);z-index:5;
@@ -66,116 +68,254 @@ h1 .hl{color:var(--aqua)}
   border-top:26px solid var(--aqua);filter:drop-shadow(0 3px 8px rgba(0,229,255,.6));
 }
 .wheel{
-  width:100%;height:100%;border-radius:50%;position:relative;
-  border:7px solid var(--white);
+  width:100%;height:100%;border-radius:50%;position:relative;border:7px solid var(--white);
   box-shadow:0 0 0 3px rgba(0,229,255,.25), 0 18px 60px rgba(0,0,0,.7), 0 0 50px rgba(0,229,255,.18);
   background:conic-gradient(
-    var(--gold)            0deg  45deg,
-    var(--ink2)           45deg  90deg,
-    var(--aqua-deep)      90deg 135deg,
-    var(--ink2)          135deg 180deg,
-    var(--aqua-deep)     180deg 225deg,
-    var(--ink2)          225deg 270deg,
-    var(--aqua-deep)     270deg 315deg,
-    var(--ink2)          315deg 360deg
-  );
-  transition:transform 5.2s cubic-bezier(.12,.66,.12,1);
-  transform:rotate(0deg);
+    var(--gold) 0deg 45deg, var(--ink2) 45deg 90deg, var(--aqua-deep) 90deg 135deg,
+    var(--ink2) 135deg 180deg, var(--aqua-deep) 180deg 225deg, var(--ink2) 225deg 270deg,
+    var(--aqua-deep) 270deg 315deg, var(--ink2) 315deg 360deg);
+  transition:transform 5.2s cubic-bezier(.12,.66,.12,1);transform:rotate(0deg);
 }
 .seg-label{
-  position:absolute;left:50%;top:50%;
-  width:118px;height:150px;margin-left:-59px;margin-top:-150px;
-  transform-origin:50% 100%;
-  font-size:13px;font-weight:800;color:var(--white);letter-spacing:.02em;
-  text-align:center;pointer-events:none;line-height:1.05;padding-top:16px;
-  text-shadow:0 1px 3px rgba(0,0,0,.55);
+  position:absolute;left:50%;top:50%;width:118px;height:150px;margin-left:-59px;margin-top:-150px;
+  transform-origin:50% 100%;font-size:13px;font-weight:800;color:var(--white);letter-spacing:.02em;
+  text-align:center;pointer-events:none;line-height:1.05;padding-top:16px;text-shadow:0 1px 3px rgba(0,0,0,.55);
 }
 .seg-label.dark-txt{color:#06121a;text-shadow:0 1px 2px rgba(255,255,255,.25)}
 .hub{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:4;
-  width:74px;height:74px;border-radius:50%;background:var(--white);
-  display:flex;align-items:center;justify-content:center;
+  width:74px;height:74px;border-radius:50%;background:var(--white);display:flex;align-items:center;justify-content:center;
   font-weight:900;font-size:13px;color:var(--aqua-deep);letter-spacing:.06em;
-  box-shadow:0 0 0 4px rgba(0,229,255,.3),0 6px 18px rgba(0,0,0,.5);
-  cursor:pointer;border:none;
+  box-shadow:0 0 0 4px rgba(0,229,255,.3),0 6px 18px rgba(0,0,0,.5);cursor:pointer;border:none;
 }
 .spins-left{margin-top:18px;font-size:14px;color:var(--text-dim);font-weight:500}
 .spins-left strong{color:var(--white)}
-
-/* ===== BOTÃO GIRAR ===== */
 .btn-spin{
-  margin-top:26px;display:inline-block;border:none;cursor:pointer;
-  font-family:inherit;font-size:16px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
-  color:#06121a;background:linear-gradient(180deg,var(--aqua),var(--aqua-deep));
-  padding:18px 44px;border-radius:100px;
-  box-shadow:0 10px 30px rgba(0,229,255,.32),inset 0 1px 0 rgba(255,255,255,.4);
-  transition:transform .15s ease,box-shadow .15s ease;
+  margin-top:26px;border:none;cursor:pointer;font-family:inherit;font-size:16px;font-weight:800;
+  letter-spacing:.06em;text-transform:uppercase;color:#06121a;
+  background:linear-gradient(180deg,var(--aqua),var(--aqua-deep));padding:18px 44px;border-radius:100px;
+  box-shadow:0 10px 30px rgba(0,229,255,.32),inset 0 1px 0 rgba(255,255,255,.4);transition:transform .15s,box-shadow .15s;
 }
 .btn-spin:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(0,229,255,.45)}
 .btn-spin:disabled{opacity:.45;cursor:default;transform:none;box-shadow:none}
 
-/* ===== RESULTADO ===== */
-.result{
-  display:none;margin-top:30px;max-width:440px;width:100%;
-  background:linear-gradient(180deg,rgba(255,176,32,.10),rgba(10,14,22,.6));
-  border:1px solid rgba(255,176,32,.35);border-radius:22px;padding:30px 24px;
-  animation:pop .5s var(--ease,cubic-bezier(.16,1,.3,1)) both;
+/* ════════ TELA 2: OFERTA ════════ */
+#offerView{display:none}
+#offerView.show{display:block}
+.topbar{
+  position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:center;gap:14px;
+  background:linear-gradient(90deg,var(--gold-deep),var(--gold));color:#1a1206;
+  font-size:13px;font-weight:800;padding:10px 16px;text-align:center;flex-wrap:wrap;
 }
-.result.show{display:block}
-@keyframes pop{0%{opacity:0;transform:scale(.92) translateY(10px)}100%{opacity:1;transform:none}}
-.result .win-emoji{font-size:42px;line-height:1}
-.result h2{color:var(--white);font-size:24px;font-weight:900;margin:10px 0 6px}
-.result h2 .prize{color:var(--gold)}
-.result p{font-size:14px;color:var(--text);margin-bottom:6px}
-.timer{
-  display:inline-flex;align-items:center;gap:8px;margin:14px 0 4px;font-weight:800;color:var(--gold);
-  background:rgba(255,176,32,.10);border:1px solid rgba(255,176,32,.3);padding:8px 16px;border-radius:100px;font-size:15px;
+.topbar .pill{background:rgba(0,0,0,.18);padding:3px 10px;border-radius:100px}
+.offer-wrap{max-width:560px;margin:0 auto;padding:38px 20px 60px;text-align:center}
+.win-emoji{font-size:46px;line-height:1}
+.parabens{font-size:clamp(26px,7vw,40px);font-weight:900;color:var(--white);line-height:1.1;margin:8px 0 26px}
+.prize-box{
+  background:linear-gradient(180deg,rgba(255,176,32,.12),rgba(10,14,22,.5));
+  border:1px solid rgba(255,176,32,.4);border-radius:22px;padding:26px 22px;margin-bottom:34px;
+  box-shadow:0 0 50px rgba(255,176,32,.12);
 }
+.prize-box .tag{
+  display:inline-block;background:var(--gold);color:#1a1206;font-size:11px;font-weight:800;
+  letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:14px;
+}
+.prize-big{font-size:clamp(44px,13vw,68px);font-weight:900;color:var(--gold);line-height:1;letter-spacing:-.02em}
+.prize-sub{font-size:15px;color:var(--text);margin-top:8px}
+.coupon-row{
+  display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;
+  background:var(--ink);border:1px dashed var(--line);border-radius:12px;padding:12px 16px;margin:18px auto 0;font-size:14px;color:var(--text);
+}
+.coupon-row strong{color:var(--white);letter-spacing:.08em;font-size:16px}
+.copy-btn{
+  background:rgba(0,229,255,.12);border:1px solid rgba(0,229,255,.3);color:var(--aqua);
+  font-family:inherit;font-size:12px;font-weight:700;padding:6px 12px;border-radius:8px;cursor:pointer;
+}
+.coupon-ok{color:var(--green);font-size:13px;font-weight:600;margin-top:12px}
+
+.sec-title{font-size:clamp(20px,5.4vw,28px);font-weight:900;color:var(--white);line-height:1.18;text-align:left;margin:8px 0 18px}
+.offer-img{width:100%;max-width:300px;border-radius:18px;border:1px solid var(--line);display:block;margin:0 auto 30px}
+
+.incluso-title{display:flex;align-items:center;gap:8px;font-size:17px;font-weight:800;color:var(--white);text-align:left;margin-bottom:14px}
+.bonus-list{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+.bonus-item{
+  background:var(--ink2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;text-align:left;
+}
+.bonus-item .bi-head{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:800;color:var(--white)}
+.bonus-item .bi-head .free{
+  margin-left:auto;background:var(--green-dim,rgba(45,224,138,.12));color:var(--green);
+  border:1px solid rgba(45,224,138,.3);font-size:10px;font-weight:800;letter-spacing:.06em;
+  text-transform:uppercase;padding:3px 9px;border-radius:100px;white-space:nowrap;
+}
+.bonus-item p{font-size:13px;color:var(--text-dim);margin-top:7px;line-height:1.5}
+
+.price-box{
+  background:linear-gradient(180deg,var(--ink2),var(--ink));border:1px solid var(--line);
+  border-radius:22px;padding:30px 24px;margin-bottom:18px;
+}
+.price-box .de{font-size:15px;color:var(--text-dim)}
+.price-box .arrow{color:var(--gold);font-size:20px;margin:2px 0}
+.price-big{font-size:clamp(42px,12vw,60px);font-weight:900;color:var(--white);line-height:1}
+.price-parc{font-size:15px;color:var(--text);margin-top:6px}
+.price-parc strong{color:var(--white)}
+.price-feats{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:16px;font-size:13px;color:var(--text);font-weight:600}
+
 .btn-buy{
-  margin-top:18px;display:block;width:100%;text-decoration:none;text-align:center;
-  font-size:16px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
-  color:#1a1206;background:linear-gradient(180deg,var(--gold),var(--gold-deep));
-  padding:18px 20px;border-radius:100px;
-  box-shadow:0 10px 30px rgba(255,176,32,.32),inset 0 1px 0 rgba(255,255,255,.4);
-  transition:transform .15s ease,box-shadow .15s ease;
+  display:block;width:100%;text-decoration:none;text-align:center;font-family:inherit;
+  font-size:clamp(14px,3.8vw,17px);font-weight:800;letter-spacing:.03em;text-transform:uppercase;
+  color:#1a1206;background:linear-gradient(180deg,var(--gold),var(--gold-deep));padding:19px 18px;border-radius:100px;
+  box-shadow:0 10px 30px rgba(255,176,32,.32),inset 0 1px 0 rgba(255,255,255,.4);transition:transform .15s,box-shadow .15s;
 }
 .btn-buy:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(255,176,32,.5)}
-.btn-buy .small{display:block;font-size:11px;font-weight:600;letter-spacing:.02em;text-transform:none;opacity:.85;margin-top:3px}
-.result .note{font-size:12px;color:var(--text-dim);margin-top:12px}
+.btn-buy .small{display:block;font-size:11px;font-weight:600;letter-spacing:.02em;text-transform:none;opacity:.85;margin-top:4px}
+.buy-sub{font-size:12px;color:var(--text-dim);margin:10px 0 30px}
 
-/* ===== CONFETE ===== */
+.guarantee{
+  display:flex;gap:14px;text-align:left;background:var(--ink2);border:1px solid var(--line);
+  border-radius:16px;padding:20px;margin-bottom:34px;
+}
+.guarantee .g-ico{font-size:30px;line-height:1}
+.guarantee h4{color:var(--white);font-size:15px;font-weight:800;margin-bottom:6px}
+.guarantee p{font-size:13px;color:var(--text-dim);line-height:1.55}
+
+.faq-title{display:flex;align-items:center;gap:8px;font-size:18px;font-weight:800;color:var(--white);text-align:left;margin-bottom:14px}
+.faq{display:flex;flex-direction:column;gap:10px;margin-bottom:34px}
+.faq-item{background:var(--ink2);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.faq-q{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;
+  padding:16px 18px;font-size:14px;font-weight:700;color:var(--white);text-align:left;
+}
+.faq-q .ic{color:var(--aqua);font-size:20px;font-weight:400;flex-shrink:0;transition:transform .25s}
+.faq-item.open .faq-q .ic{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s var(--ease)}
+.faq-a p{padding:0 18px 16px;font-size:13px;color:var(--text-dim);line-height:1.6;text-align:left}
+.faq-item.open .faq-a{max-height:260px}
+
+.offer-footer{font-size:12px;color:var(--text-dim);margin-top:30px}
+
+/* ════════ CONFETE ════════ */
 #confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50;display:none}
 </style>
 </head>
 <body>
 
-  <div class="kicker"><span class="dot"></span> Oferta de despedida</div>
+  <!-- ════════ TELA 1: ROLETA ════════ -->
+  <div id="rouletteView">
+    <div class="kicker"><span class="dot"></span> Oferta de despedida</div>
+    <h1>Espera! 🛑<br>Antes de fechar, <span class="hl">gire a roleta</span> e garanta seu desconto 🎯</h1>
+    <p class="sub">Você está a um giro de uma condição que não vai aparecer de novo. Boa sorte!</p>
 
-  <h1>Espera! 🛑<br>Antes de fechar, <span class="hl">gire a roleta</span> e garanta seu desconto 🎯</h1>
-  <p class="sub">Você está a um giro de uma condição que não vai aparecer de novo. Boa sorte!</p>
-
-  <div class="wheel-wrap">
-    <div class="pointer"></div>
-    <div class="wheel" id="wheel">
-      <!-- labels inseridas via JS -->
+    <div class="wheel-wrap">
+      <div class="pointer"></div>
+      <div class="wheel" id="wheel"></div>
+      <button class="hub" id="hub" aria-label="Girar a roleta">GIRAR</button>
     </div>
-    <button class="hub" id="hub" aria-label="Girar a roleta">GIRAR</button>
+
+    <div class="spins-left">🎯 Você tem <strong>1 giro</strong> — boa sorte!</div>
+    <button class="btn-spin" id="spinBtn">Girar a roleta</button>
   </div>
 
-  <div class="spins-left">🎯 Você tem <strong>1 giro</strong> — boa sorte!</div>
+  <!-- ════════ TELA 2: OFERTA (revela após o giro) ════════ -->
+  <div id="offerView">
+    <div class="topbar">
+      <span class="pill">🎟️ Cupom VOLTEI50</span>
+      <span>⏳ Expira em <span id="timer">10:00</span></span>
+    </div>
 
-  <button class="btn-spin" id="spinBtn">Girar a roleta</button>
+    <div class="offer-wrap">
+      <div class="win-emoji">🎉</div>
+      <h2 class="parabens">Parabéns!<br><span class="hl">Você acabou de ganhar:</span></h2>
 
-  <div class="result" id="result">
-    <div class="win-emoji">🎉</div>
-    <h2>Parabéns! Você ganhou <span class="prize">R$ 50 OFF</span></h2>
-    <p>Seu desconto foi aplicado. De <s>R$ 197,90</s> por <strong style="color:#fff">R$ 147,90</strong>.</p>
-    <div class="timer">⏳ Expira em <span id="timer">10:00</span></div>
-    <a class="btn-buy" id="buyBtn" href="https://pay.kiwify.com.br/llBxiaL" target="_blank" rel="noopener">
-      Quero meu R$ 50 OFF agora →
-      <span class="small">Pagamento seguro · Acesso imediato</span>
-    </a>
-    <div class="note">Desconto válido apenas nesta página e por tempo limitado.</div>
+      <div class="prize-box">
+        <div class="tag">🎁 Seu presente</div>
+        <div class="prize-big">R$ 50 OFF</div>
+        <div class="prize-sub">no acesso completo ao <strong style="color:#fff">SOS Método</strong></div>
+        <div class="coupon-row">
+          CUPOM <strong id="coupon">VOLTEI50</strong>
+          <button class="copy-btn" id="copyBtn">📋 copiar</button>
+        </div>
+        <div class="coupon-ok">✅ Cupom já aplicado no botão abaixo</div>
+      </div>
+
+      <h3 class="sec-title">Tudo que você vai levar<br><span class="hl">no SOS Método com R$ 50 OFF:</span></h3>
+      <img class="offer-img" src="../rhayner.jpg" alt="Rhayner Silva — criador do SOS Método" width="419" height="562" loading="lazy">
+
+      <div class="incluso-title">✅ O que está incluso:</div>
+      <div class="bonus-list">
+        <div class="bonus-item">
+          <div class="bi-head"><span>🧽</span> Curso Completo de Higienização de Estofados</div>
+          <p>Do equipamento ao primeiro cliente: técnicas de higienização de sofás, colchões e estofados que entregam resultado e fazem o cliente voltar.</p>
+        </div>
+        <div class="bonus-item">
+          <div class="bi-head"><span>💬</span> Suporte individual de compra de equipamentos <span class="free">Grátis</span></div>
+          <p>Te oriento exatamente quais equipamentos comprar pra começar sem desperdiçar dinheiro.</p>
+        </div>
+        <div class="bonus-item">
+          <div class="bi-head"><span>📲</span> Suporte individual pelo WhatsApp <span class="free">Grátis</span></div>
+          <p>Tire suas dúvidas sobre as técnicas e os primeiros serviços direto comigo.</p>
+        </div>
+        <div class="bonus-item">
+          <div class="bi-head"><span>♾️</span> Acesso vitalício ao conteúdo <span class="free">Grátis</span></div>
+          <p>Estude no seu ritmo e reveja as aulas quantas vezes quiser — para sempre, com as atualizações futuras.</p>
+        </div>
+        <div class="bonus-item">
+          <div class="bi-head"><span>🚗</span> Curso de Higienização Automotiva <span class="free">Grátis</span></div>
+          <p>Amplie seus serviços (e seu faturamento) higienizando também o interior de veículos.</p>
+        </div>
+        <div class="bonus-item">
+          <div class="bi-head"><span>⭐</span> Cursos bônus — Técnicas avançadas <span class="free">Grátis</span></div>
+          <p>Manchas difíceis, precificação e atendimento pra você cobrar mais e fechar mais clientes.</p>
+        </div>
+      </div>
+
+      <div class="price-box">
+        <div class="de">De <s>R$ 197,90</s></div>
+        <div class="arrow">↓</div>
+        <div class="price-big">R$ 147,90</div>
+        <div class="price-parc">ou <strong>12x de R$ 15,30</strong></div>
+        <div class="price-feats"><span>✅ Acesso imediato</span><span>✅ Garantia de 7 dias</span></div>
+      </div>
+
+      <a class="btn-buy" href="https://pay.kiwify.com.br/llBxiaL?coupon=VOLTEI50" target="_blank" rel="noopener">
+        Quero meu SOS Método com R$ 50 OFF →
+        <span class="small">Pagamento seguro via Pix ou Cartão · Acesso imediato</span>
+      </a>
+      <div class="buy-sub">🔒 Cupom VOLTEI50 já aplicado · Acesso imediato após o pagamento</div>
+
+      <div class="guarantee">
+        <div class="g-ico">🛡️</div>
+        <div>
+          <h4>Garantia incondicional de 7 dias</h4>
+          <p>Entre, assista às aulas e comece a aplicar. Se em 7 dias você achar que não é pra você, é só pedir o reembolso que devolvemos 100% do valor, sem burocracia.</p>
+        </div>
+      </div>
+
+      <div class="faq-title">❓ Perguntas frequentes:</div>
+      <div class="faq">
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Nunca trabalhei com isso. Consigo aprender? <span class="ic">+</span></div>
+          <div class="faq-a"><p>Sim. O método foi feito pra quem começa do zero — passo a passo, do equipamento ao primeiro cliente. E você tem suporte individual pra qualquer dúvida.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Preciso de muito dinheiro pra começar? <span class="ic">+</span></div>
+          <div class="faq-a"><p>Não. O investimento inicial em equipamento é baixo e cabe no porta-malas do carro. Dá pra começar pequeno e crescer com o dinheiro dos primeiros serviços.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Por quanto tempo tenho acesso? <span class="ic">+</span></div>
+          <div class="faq-a"><p>O acesso é vitalício. Você estuda no seu ritmo e revê as aulas quantas vezes quiser, para sempre — incluindo as atualizações futuras.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Como funciona a garantia? <span class="ic">+</span></div>
+          <div class="faq-a"><p>Você tem 7 dias de garantia incondicional. Se não gostar, devolvemos 100% do seu dinheiro, sem perguntas.</p></div>
+        </div>
+      </div>
+
+      <a class="btn-buy" href="https://pay.kiwify.com.br/llBxiaL?coupon=VOLTEI50" target="_blank" rel="noopener">
+        Quero meu SOS Método com R$ 50 OFF →
+      </a>
+
+      <div class="offer-footer">SOS Método · Rhayner Silva · Higienização de Estofados</div>
+    </div>
   </div>
 
   <canvas id="confetti"></canvas>
@@ -183,59 +323,60 @@ h1 .hl{color:var(--aqua)}
 <script>
 /* ===== Monta as legendas da roleta (8 fatias de 45°) ===== */
 var SEGMENTS = [
-  {t:'R$ 50 OFF', dark:true},   /* 0 - dourado (prêmio) */
-  {t:'5% OFF',    dark:false},  /* 1 */
-  {t:'Nada 😅',   dark:false},  /* 2 */
-  {t:'R$ 20 OFF', dark:false},  /* 3 */
-  {t:'Tente +',   dark:false},  /* 4 */
-  {t:'10% OFF',   dark:false},  /* 5 */
-  {t:'Brinde',    dark:false},  /* 6 */
-  {t:'Quase!',    dark:false}   /* 7 */
+  {t:'R$ 50 OFF', dark:true}, {t:'5% OFF', dark:false}, {t:'Nada 😅', dark:false},
+  {t:'R$ 20 OFF', dark:false}, {t:'Tente +', dark:false}, {t:'10% OFF', dark:false},
+  {t:'Brinde', dark:false}, {t:'Quase!', dark:false}
 ];
 var wheel = document.getElementById('wheel');
 SEGMENTS.forEach(function(seg,i){
-  var ang = i*45 + 22.5;            /* centro da fatia */
+  var ang = i*45 + 22.5;
   var el = document.createElement('div');
   el.className = 'seg-label' + (seg.dark ? ' dark-txt' : '');
   el.textContent = seg.t;
-  /* pivota no centro da roleta e posiciona no meio da fatia */
   el.style.transform = 'rotate('+ang+'deg)';
   wheel.appendChild(el);
 });
 
-/* ===== Lógica do giro (sempre cai no R$ 50 OFF = fatia 0) ===== */
+/* ===== Giro (sempre cai no R$ 50 OFF = fatia 0) ===== */
 var spun = false;
 var spinBtn = document.getElementById('spinBtn');
 var hub = document.getElementById('hub');
-var result = document.getElementById('result');
 
 function spin(){
   if(spun) return; spun = true;
   spinBtn.disabled = true;
-  /* fatia 0 tem centro em 22.5°; pra parar sob o ponteiro (topo),
-     giramos 6 voltas + alinhamento, com um leve desvio pra parecer natural */
-  var voltas = 6;
-  var alvo = 360 - 22.5;            /* leva o centro da fatia 0 ao topo */
-  var jitter = (Math.random()*8) - 4; /* pequeno desvio visual (±4°) dentro da fatia */
-  var final = voltas*360 + alvo + jitter;
-  wheel.style.transform = 'rotate('+final+'deg)';
-  setTimeout(function(){
-    result.classList.add('show');
-    fireConfetti();
-    startTimer(10*60);
-    result.scrollIntoView({behavior:'smooth', block:'center'});
-    if(window.fbq) fbq('trackCustom','GirouRoleta',{premio:'R$50 OFF'});
-  }, 5300);
+  var voltas = 6, alvo = 360 - 22.5, jitter = (Math.random()*8) - 4;
+  wheel.style.transform = 'rotate('+(voltas*360 + alvo + jitter)+'deg)';
+  setTimeout(showOffer, 5300);
 }
 spinBtn.addEventListener('click', spin);
 hub.addEventListener('click', spin);
+
+function showOffer(){
+  document.getElementById('rouletteView').style.display = 'none';
+  document.getElementById('offerView').classList.add('show');
+  window.scrollTo(0,0);
+  fireConfetti();
+  startTimer(10*60);
+  if(window.fbq) fbq('trackCustom','GirouRoleta',{premio:'R$50 OFF'});
+}
+
+/* ===== Copiar cupom ===== */
+document.getElementById('copyBtn').addEventListener('click', function(){
+  var btn = this;
+  try{ navigator.clipboard.writeText('VOLTEI50'); }catch(e){}
+  btn.textContent = '✅ copiado';
+  setTimeout(function(){ btn.textContent = '📋 copiar'; }, 2000);
+});
+
+/* ===== FAQ ===== */
+function toggleFaq(el){ el.parentElement.classList.toggle('open'); }
 
 /* ===== Contador de urgência ===== */
 function startTimer(sec){
   var el = document.getElementById('timer');
   var t = setInterval(function(){
-    sec--;
-    if(sec < 0){ sec = 0; clearInterval(t); }
+    sec--; if(sec < 0){ sec = 0; clearInterval(t); }
     var m = Math.floor(sec/60), s = sec%60;
     el.textContent = m + ':' + (s<10?'0':'') + s;
   }, 1000);
@@ -246,42 +387,25 @@ function fireConfetti(){
   var canvas = document.getElementById('confetti');
   canvas.style.display = 'block';
   var ctx = canvas.getContext('2d');
-  var W = canvas.width = window.innerWidth;
-  var H = canvas.height = window.innerHeight;
+  var W = canvas.width = window.innerWidth, H = canvas.height = window.innerHeight;
   var colors = ['#00e5ff','#ffb020','#2de08a','#f3f6fb','#00a8c4'];
   var pieces = [];
   for(var i=0;i<140;i++){
-    pieces.push({
-      x: Math.random()*W,
-      y: Math.random()*-H,
-      r: 4 + Math.random()*6,
-      c: colors[i % colors.length],
-      vy: 2 + Math.random()*4,
-      vx: -1.5 + Math.random()*3,
-      rot: Math.random()*360,
-      vr: -6 + Math.random()*12
-    });
+    pieces.push({x:Math.random()*W, y:Math.random()*-H, r:4+Math.random()*6,
+      c:colors[i%colors.length], vy:2+Math.random()*4, vx:-1.5+Math.random()*3,
+      rot:Math.random()*360, vr:-6+Math.random()*12});
   }
   var start = null;
   function frame(ts){
     if(!start) start = ts;
-    var elapsed = ts - start;
     ctx.clearRect(0,0,W,H);
     pieces.forEach(function(p){
       p.y += p.vy; p.x += p.vx; p.rot += p.vr;
-      ctx.save();
-      ctx.translate(p.x,p.y);
-      ctx.rotate(p.rot*Math.PI/180);
-      ctx.fillStyle = p.c;
-      ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r*0.6);
-      ctx.restore();
+      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot*Math.PI/180);
+      ctx.fillStyle = p.c; ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r*0.6); ctx.restore();
     });
-    if(elapsed < 4200){
-      requestAnimationFrame(frame);
-    } else {
-      ctx.clearRect(0,0,W,H);
-      canvas.style.display = 'none';
-    }
+    if(ts - start < 4200){ requestAnimationFrame(frame); }
+    else{ ctx.clearRect(0,0,W,H); canvas.style.display = 'none'; }
   }
   requestAnimationFrame(frame);
 }
