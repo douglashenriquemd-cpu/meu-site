@@ -365,6 +365,8 @@ section{padding:104px 0;position:relative}
 .transform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
 .ba-card{background:var(--ink2);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;transition:border-color .25s,transform .25s}
 .ba-card:hover{border-color:rgba(0,229,255,.35);transform:translateY(-3px)}
+.ba-photo{line-height:0;background:#000}
+.ba-photo img{width:100%;height:auto;display:block}
 .ba-pair{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line)}
 .ba-slot{position:relative;aspect-ratio:3/4;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--text-dim);text-align:center;padding:10px}
 .ba-slot .ba-ic{font-size:26px;opacity:.5}
@@ -711,28 +713,18 @@ footer{padding:40px 24px;text-align:center;border-top:1px solid var(--line);font
     </div>
     <div class="transform-grid">
       <div class="ba-card reveal">
-        <div class="ba-pair">
-          <div class="ba-slot"><span class="ba-tag antes">ANTES</span><span class="ba-ic">📷</span><span class="ba-txt">Foto antes aqui</span></div>
-          <div class="ba-slot"><span class="ba-tag depois">DEPOIS</span><span class="ba-ic">📷</span><span class="ba-txt">Foto depois aqui</span></div>
-        </div>
+        <div class="ba-photo"><img src="ba-1.jpg" alt="Sofá antes e depois da higienização" loading="lazy"></div>
         <div class="ba-caption">Sofá encardido <span>→</span> Como novo</div>
       </div>
       <div class="ba-card reveal">
-        <div class="ba-pair">
-          <div class="ba-slot"><span class="ba-tag antes">ANTES</span><span class="ba-ic">📷</span><span class="ba-txt">Foto antes aqui</span></div>
-          <div class="ba-slot"><span class="ba-tag depois">DEPOIS</span><span class="ba-ic">📷</span><span class="ba-txt">Foto depois aqui</span></div>
-        </div>
-        <div class="ba-caption">Colchão manchado <span>→</span> Higienizado</div>
+        <div class="ba-photo"><img src="ba-2.jpg" alt="Poltrona antes e depois da higienização" loading="lazy"></div>
+        <div class="ba-caption">Poltrona manchada <span>→</span> Renovada</div>
       </div>
       <div class="ba-card reveal">
-        <div class="ba-pair">
-          <div class="ba-slot"><span class="ba-tag antes">ANTES</span><span class="ba-ic">📷</span><span class="ba-txt">Foto antes aqui</span></div>
-          <div class="ba-slot"><span class="ba-tag depois">DEPOIS</span><span class="ba-ic">📷</span><span class="ba-txt">Foto depois aqui</span></div>
-        </div>
-        <div class="ba-caption">Banco automotivo <span>→</span> Renovado</div>
+        <div class="ba-photo"><img src="ba-3.jpg" alt="Sofá claro antes e depois da higienização" loading="lazy"></div>
+        <div class="ba-caption">Sofá claro encardido <span>→</span> Impecável</div>
       </div>
     </div>
-    <div class="transform-note">📌 Espaços reservados — envie suas fotos de antes/depois e eu coloco aqui.</div>
   </div>
 </section>
 
