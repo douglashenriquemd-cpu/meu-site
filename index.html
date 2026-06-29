@@ -8,7 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="image" href="bg-mobile.jpg" media="(max-width:768px)">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
 <style>
 /* ═══════════════════════════════════════════════════════
    DESIGN SYSTEM — SOS Método
@@ -1104,6 +1105,37 @@ function initVideoAlt(){
 }
 
 /* ═══════════════════════════════════════
+   DESEMPENHO: carrega os vídeos só perto da seção
+═══════════════════════════════════════ */
+function initLazyVideos(){
+  var section = document.getElementById('prova');
+  if(!section) return;
+  var SRCS = [
+    "https://scripts.converteai.net/f04f0c1f-d8c5-4ccf-aa51-6f81483a882e/players/6a3588c9de7f79e0ec9dd988/v4/player.js",
+    "https://scripts.converteai.net/f04f0c1f-d8c5-4ccf-aa51-6f81483a882e/players/6a3588ece3a27492ce2372e7/v4/player.js",
+    "https://scripts.converteai.net/f04f0c1f-d8c5-4ccf-aa51-6f81483a882e/players/6a358906de7f79e0ec9ddad8/v4/player.js",
+    "https://scripts.converteai.net/f04f0c1f-d8c5-4ccf-aa51-6f81483a882e/players/6a35891da01c98382038ce56/v4/player.js"
+  ];
+  var loaded = false;
+  function load(){
+    if(loaded) return; loaded = true;
+    for(var i=0;i<SRCS.length;i++){
+      var s = document.createElement('script');
+      s.src = SRCS[i]; s.async = true;
+      document.head.appendChild(s);
+    }
+  }
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      if(entries[0].isIntersecting){ load(); io.disconnect(); }
+    }, {rootMargin: '600px'});
+    io.observe(section);
+  } else {
+    load();
+  }
+}
+
+/* ═══════════════════════════════════════
    INICIALIZAÇÃO
 ═══════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', function(){
@@ -1112,14 +1144,9 @@ document.addEventListener('DOMContentLoaded', function(){
   initReveal();
   initFloatCta();
   initVideoAlt();
+  initLazyVideos();
 });
 </script>
-
-<!-- VTurb players (depoimentos) -->
-<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/f04f0c1f-d8c5-4ccf-aa51-6f81483a882e/players/6a3588c9de7f79e0ec9dd988/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
-<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/f04f0c1f-d8c5-4ccf-aa51-6f81483a882e/players/6a3588ece3a27492ce2372e7/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
-<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/f04f0c1f-d8c5-4ccf-aa51-6f81483a882e/players/6a358906de7f79e0ec9ddad8/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
-<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/f04f0c1f-d8c5-4ccf-aa51-6f81483a882e/players/6a35891da01c98382038ce56/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
 
 </body>
 </html>
