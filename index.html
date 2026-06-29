@@ -1088,6 +1088,22 @@ function initFloatCta(){
 }
 
 /* ═══════════════════════════════════════
+   ACESSIBILIDADE: alt nas miniaturas do VTurb
+═══════════════════════════════════════ */
+function initVideoAlt(){
+  var ALT = 'Depoimento em vídeo de aluno do SOS Método';
+  function fix(){
+    var imgs = document.querySelectorAll('.prova-video img:not([alt]), .prova-video img[alt=""]');
+    for(var i=0;i<imgs.length;i++){ imgs[i].setAttribute('alt', ALT); }
+  }
+  fix();
+  if('MutationObserver' in window){
+    var section = document.getElementById('prova') || document.body;
+    new MutationObserver(fix).observe(section, {childList:true, subtree:true});
+  }
+}
+
+/* ═══════════════════════════════════════
    INICIALIZAÇÃO
 ═══════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', function(){
@@ -1095,6 +1111,7 @@ document.addEventListener('DOMContentLoaded', function(){
   startCountdown(5);
   initReveal();
   initFloatCta();
+  initVideoAlt();
 });
 </script>
 
