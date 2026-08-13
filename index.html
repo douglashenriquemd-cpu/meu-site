@@ -836,7 +836,7 @@ footer{padding:40px 24px;text-align:center;border-top:1px solid var(--line);font
         <div class="preco-label">Hoje você paga apenas</div>
         <div class="preco-parcela"><sup>12x de R$</sup> 20,47</div>
         <div class="preco-avista">ou <strong>R$ 197,90 à vista</strong></div>
-        <button class="btn gold" id="comprar" onclick="window.open('https://pay.kiwify.com.br/llBxiaL','_blank')">QUERO GARANTIR MINHA VAGA AGORA →</button>
+        <button class="btn gold" id="comprar" onclick="window.open('https://pay.kiwify.com.br/llBxiaL?afid=waP5Te17&amp;src=elias','_blank')">QUERO GARANTIR MINHA VAGA AGORA →</button>
         <div class="btn-sub">Clique e seja redirecionado para o pagamento seguro</div>
         <div class="garantias">
           <div class="garantia-item"><span>🔒</span> Pagamento seguro</div>
@@ -1189,7 +1189,7 @@ function initCheckoutTracking(){
   var btn = document.getElementById('comprar');
   if(btn){
     btn.onclick = function(){
-      window.open(buildCheckoutUrl('https://pay.kiwify.com.br/llBxiaL'), '_blank');
+      window.open(buildCheckoutUrl('https://pay.kiwify.com.br/llBxiaL?afid=waP5Te17&src=elias'), '_blank');
     };
   }
 }
