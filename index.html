@@ -1175,7 +1175,8 @@ function buildCheckoutUrl(base){
   try{
     var url = new URL(base);
     var p = getTrackingParams();
-    Object.keys(p).forEach(function(k){ url.searchParams.set(k, p[k]); });
+    /* o que ja vem escrito no link (afid, src) manda: so preenche o que falta */
+    Object.keys(p).forEach(function(k){ if(!url.searchParams.has(k)) url.searchParams.set(k, p[k]); });
     return url.toString();
   }catch(e){ return base; }
 }
