@@ -346,9 +346,14 @@ document.addEventListener('DOMContentLoaded', function(){
     };
   }
 
+  /* ?cta=1 na URL mostra o botao na hora — so para você conferir o visual */
+  var teste = false;
+  try{ teste = new URLSearchParams(window.location.search).get('cta') === '1'; }catch(e){}
+
   var jaViu = false;
   try{ jaViu = sessionStorage.getItem('sosAulaCta') === '1'; }catch(e){}
-  if(jaViu){ revelarCTA(); }
+
+  if(teste || jaViu){ revelarCTA(); }
   else { setTimeout(revelarCTA, CTA_DELAY_SEG * 1000); }
 });
 </script>
