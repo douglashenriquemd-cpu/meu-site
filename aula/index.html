@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>SOS Método — Aula gratuita</title>
+<meta name="description" content="Assista à aula e descubra como higienizar sofás, colchões e estofados e cobrar de R$ 250 a R$ 450 por serviço — mesmo começando do zero.">
+<meta name="theme-color" content="#05070b">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '424747819483688');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=424747819483688&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<link rel="preconnect" href="https://scripts.converteai.net">
+<link rel="preconnect" href="https://cdn.converteai.net">
+<link rel="preconnect" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   DESIGN SYSTEM — SOS Método (mesmo da landing)
+═══════════════════════════════════════════════════════ */
+:root{
+  --void:      #05070b;
+  --ink:       #0a0e16;
+  --ink2:      #10151f;
+  --ink3:      #161c29;
+  --line:      #1f2636;
+  --text:      #aab4c8;
+  --text-dim:  #8b98b4;
+  --white:     #f3f6fb;
+  --aqua:      #00e5ff;
+  --aqua-glow: rgba(0,229,255,.35);
+  --gold:      #ffb020;
+  --gold-deep: #d98c0a;
+  --green:     #2de08a;
+  --ease: cubic-bezier(.16,1,.3,1);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:hidden;-webkit-text-size-adjust:100%}
+body{
+  background:var(--void);
+  color:var(--text);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  max-width:100%;
+  position:relative;
+  min-height:100vh;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--aqua);color:#000}
+
+/* granulado da marca */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  pointer-events:none;
+  z-index:999;
+  opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode:overlay;
+}
+/* brilho de fundo atrás do player */
+.glow{
+  position:fixed;top:-10%;left:50%;transform:translateX(-50%);
+  width:120vw;max-width:900px;height:70vh;
+  background:radial-gradient(ellipse at center, rgba(0,229,255,.10) 0%, rgba(0,229,255,.03) 38%, transparent 68%);
+  pointer-events:none;z-index:0;
+}
+
+/* ═══════════════════════════════════════
+   TOPBAR
+═══════════════════════════════════════ */
+#topbar{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:12px 18px;
+  border-bottom:1px solid var(--line);
+  background:rgba(5,7,11,.88);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  font-family:'Space Grotesk',monospace;
+  font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--white);text-align:center;
+}
+#topbar .dot{
+  width:7px;height:7px;border-radius:50%;background:var(--aqua);
+  box-shadow:0 0 0 0 var(--aqua-glow);
+  animation:pulse 2s infinite;flex:none;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(0,229,255,.55)}
+  70%{box-shadow:0 0 0 9px rgba(0,229,255,0)}
+  100%{box-shadow:0 0 0 0 rgba(0,229,255,0)}
+}
+
+/* ═══════════════════════════════════════
+   VSL
+═══════════════════════════════════════ */
+main{position:relative;z-index:1}
+.vsl{
+  max-width:520px;margin:0 auto;
+  padding:34px 20px calc(48px + env(safe-area-inset-bottom));
+  text-align:center;
+}
+
+.kicker{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Space Grotesk',monospace;
+  font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--aqua);margin-bottom:20px;padding:7px 15px;
+  border:1px solid rgba(0,229,255,.25);border-radius:100px;background:rgba(0,229,255,.04);
+}
+
+h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(32px,8.6vw,52px);
+  line-height:.98;letter-spacing:.01em;
+  color:var(--white);
+  margin-bottom:16px;
+  overflow-wrap:break-word;
+}
+h1 .accent{
+  display:block;
+  background:linear-gradient(120deg,var(--aqua) 0%,#5ff5ff 50%,var(--aqua) 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  animation:shineText 6s linear infinite;
+}
+@keyframes shineText{to{background-position:200% center}}
+
+.sub{
+  font-size:16px;line-height:1.62;color:var(--text);
+  max-width:420px;margin:0 auto 26px;
+}
+.sub strong{color:var(--white);font-weight:700}
+
+/* PLAYER */
+.player{
+  width:100%;max-width:400px;margin:0 auto;
+  border-radius:14px;overflow:hidden;
+  border:1px solid var(--line);
+  background:#000;
+  box-shadow:0 24px 70px -30px rgba(0,229,255,.35), 0 0 0 1px rgba(0,229,255,.06);
+}
+.player vturb-smartplayer{display:block;width:100%}
+
+.sound-hint{
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  flex-wrap:wrap;
+  margin:16px auto 0;max-width:400px;
+  font-family:'Space Grotesk',monospace;
+  font-size:12.5px;line-height:1.5;color:var(--text-dim);letter-spacing:.01em;
+}
+.sound-hint b{color:var(--gold);font-weight:700}
+
+/* CTA (aparece depois do tempo definido em CTA_DELAY_SEG) */
+#cta{
+  margin-top:34px;
+  opacity:0;transform:translateY(18px);
+  max-height:0;overflow:hidden;
+  transition:opacity .7s var(--ease), transform .7s var(--ease);
+}
+#cta.on{opacity:1;transform:translateY(0);max-height:600px;overflow:visible}
+.btn{
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  width:100%;min-height:58px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+  color:#1a1100;font-family:'Inter',sans-serif;font-weight:800;
+  font-size:15.5px;letter-spacing:.01em;line-height:1.25;
+  padding:17px 22px;border:none;border-radius:100px;cursor:pointer;
+  box-shadow:0 14px 34px -14px rgba(255,176,32,.65);
+  animation:breathe 2.6s ease-in-out infinite;
+  -webkit-tap-highlight-color:transparent;
+}
+.btn:active{transform:scale(.985)}
+@keyframes breathe{50%{transform:scale(1.018)}}
+.btn-sub{
+  margin-top:13px;
+  font-family:'Space Grotesk',monospace;
+  font-size:12.5px;color:var(--text-dim);letter-spacing:.02em;
+}
+.btn-sub span{color:var(--green);font-weight:600}
+
+/* PROVA */
+.trust{
+  display:flex;justify-content:center;
+  margin-top:38px;padding-top:26px;
+  border-top:1px solid var(--line);
+}
+.trust .item{flex:1;padding:0 6px;border-right:1px solid var(--line)}
+.trust .item:last-child{border-right:none}
+.trust .num{
+  font-family:'Bebas Neue',sans-serif;font-size:27px;
+  color:var(--white);line-height:1;letter-spacing:.02em;
+}
+.trust .lbl{
+  font-family:'Space Grotesk',monospace;font-size:9.5px;
+  color:var(--text-dim);font-weight:500;margin-top:5px;
+  letter-spacing:.04em;text-transform:uppercase;line-height:1.35;
+}
+
+footer{
+  padding:26px 20px calc(30px + env(safe-area-inset-bottom));
+  text-align:center;border-top:1px solid var(--line);
+  background:var(--ink);position:relative;z-index:1;
+}
+footer p{font-size:11.5px;color:var(--text-dim);line-height:1.7;max-width:420px;margin:0 auto}
+
+@media (prefers-reduced-motion: reduce){
+  .btn,h1 .accent,#topbar .dot{animation:none}
+  #cta{transition:none}
+}
+
+/* telas maiores: só respira mais, o layout segue o mesmo */
+@media (min-width:600px){
+  .vsl{padding:52px 24px 64px}
+  .sub{font-size:17px}
+  .trust .num{font-size:32px}
+  .trust .lbl{font-size:10.5px}
+}
+</style>
+</head>
+<body>
+
+<div class="glow" aria-hidden="true"></div>
+
+<!-- TOPBAR -->
+<div id="topbar">
+  <span class="dot" aria-hidden="true"></span>
+  <span>Assista antes que saia do ar</span>
+</div>
+
+<main>
+  <section class="vsl">
+    <div class="kicker">SOS Método</div>
+
+    <h1>
+      <span class="accent">1 hora de higienização</span>
+      paga mais que um dia inteiro de trabalho
+    </h1>
+
+    <p class="sub">
+      Conheça o método que ensina você a <strong>higienizar sofás, colchões e estofados</strong> e cobrar de <strong>R$ 250 a R$ 450 por serviço</strong> — mesmo começando do zero.
+    </p>
+
+    <!-- VSL -->
+    <div class="player">
+      <vturb-smartplayer id="vid-6a8342c13cf369aa4822e042" style="display:block;margin:0 auto;width:100%">
+        <div class="vturb-player-placeholder" style="position:relative;width:100%;padding:177.77777777777777% 0 0;z-index:0;background-color:black"></div>
+      </vturb-smartplayer>
+    </div>
+
+    <p class="sound-hint">
+      <span aria-hidden="true">🔊</span> O seu vídeo já começou.
+      <b>Toque na tela para ativar o som.</b>
+    </p>
+
+    <!-- CTA -->
+    <div id="cta" aria-hidden="true">
+      <button class="btn" id="comprar" type="button">QUERO GARANTIR MINHA VAGA AGORA →</button>
+      <div class="btn-sub">12x de R$ 20,47 · <span>Garantia de 7 dias</span></div>
+    </div>
+
+    <div class="trust">
+      <div class="item"><div class="num">20K+</div><div class="lbl">Alunos formados</div></div>
+      <div class="item"><div class="num">50+</div><div class="lbl">Empresas abertas</div></div>
+      <div class="item"><div class="num">9 anos</div><div class="lbl">De experiência</div></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>SOS Método · Todos os direitos reservados.<br>Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook.</p>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════
+   CTA: tempo até o botão aparecer (em segundos)
+   Troque só este número para ajustar ao seu vídeo.
+═══════════════════════════════════════ */
+var CTA_DELAY_SEG = 300;
+
+/* ═══════════════════════════════════════
+   RASTREIO: captura UTMs e repassa ao checkout
+═══════════════════════════════════════ */
+var CHECKOUT = 'https://pay.kiwify.com.br/llBxiaL';
+var TRACK_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_id','src','sck','fbclid','gclid','ttclid','xcod'];
+function getTrackingParams(){
+  var out = {};
+  try{
+    var saved = JSON.parse(sessionStorage.getItem('sosUtms') || '{}');
+    Object.keys(saved).forEach(function(k){ out[k] = saved[k]; });
+  }catch(e){}
+  var cur = new URLSearchParams(window.location.search);
+  TRACK_KEYS.forEach(function(k){ if(cur.has(k)) out[k] = cur.get(k); });
+  try{ sessionStorage.setItem('sosUtms', JSON.stringify(out)); }catch(e){}
+  return out;
+}
+function buildCheckoutUrl(base){
+  try{
+    var url = new URL(base);
+    var p = getTrackingParams();
+    Object.keys(p).forEach(function(k){ url.searchParams.set(k, p[k]); });
+    return url.toString();
+  }catch(e){ return base; }
+}
+
+/* ═══════════════════════════════════════
+   Libera o CTA e lembra que já liberou
+═══════════════════════════════════════ */
+function revelarCTA(){
+  var cta = document.getElementById('cta');
+  if(!cta || cta.classList.contains('on')) return;
+  cta.classList.add('on');
+  cta.setAttribute('aria-hidden','false');
+  try{ sessionStorage.setItem('sosAulaCta','1'); }catch(e){}
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  getTrackingParams(); /* guarda as UTMs assim que a pessoa chega */
+
+  var btn = document.getElementById('comprar');
+  if(btn){
+    btn.onclick = function(){
+      if(window.fbq){ fbq('track','InitiateCheckout'); }
+      window.open(buildCheckoutUrl(CHECKOUT), '_blank');
+    };
+  }
+
+  var jaViu = false;
+  try{ jaViu = sessionStorage.getItem('sosAulaCta') === '1'; }catch(e){}
+  if(jaViu){ revelarCTA(); }
+  else { setTimeout(revelarCTA, CTA_DELAY_SEG * 1000); }
+});
+</script>
+
+<!-- Player VTurb -->
+<script type="text/javascript">
+var s=document.createElement("script");
+s.src="https://scripts.converteai.net/f04f0c1f-d8c5-4ccf-aa51-6f81483a882e/players/6a8342c13cf369aa4822e042/v4/player.js",
+s.async=!0,document.head.appendChild(s);
+</script>
+
+</body>
+</html>
