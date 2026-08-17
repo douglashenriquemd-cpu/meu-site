@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>SOS Método — Aula gratuita</title>
-<meta name="description" content="Assista à aula e descubra como higienizar sofás, colchões e estofados e cobrar de R$ 250 a R$ 450 por serviço — mesmo começando do zero.">
+<title>SOS Método — O mercado silencioso</title>
+<meta name="description" content="Existe um mercado que toda cidade precisa e quase ninguém sabe atender. Assista e descubra como transformar R$ 5,50 em produto em R$ 250 por serviço — começando do zero.">
 <meta name="theme-color" content="#05070b">
 
 <!-- Meta Pixel Code -->
@@ -135,14 +135,7 @@ h1{
   margin-bottom:16px;
   overflow-wrap:break-word;
 }
-h1 .accent{
-  display:block;
-  background:linear-gradient(120deg,var(--aqua) 0%,#5ff5ff 50%,var(--aqua) 100%);
-  background-size:200% auto;
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-  animation:shineText 6s linear infinite;
-}
-@keyframes shineText{to{background-position:200% center}}
+h1 .hl{color:var(--aqua)}
 
 .sub{
   font-size:16px;line-height:1.62;color:var(--text);
@@ -223,7 +216,7 @@ footer{
 footer p{font-size:11.5px;color:var(--text-dim);line-height:1.7;max-width:420px;margin:0 auto}
 
 @media (prefers-reduced-motion: reduce){
-  .btn,h1 .accent{animation:none}
+  .btn{animation:none}
   #cta{transition:none}
 }
 
@@ -260,12 +253,13 @@ footer p{font-size:11.5px;color:var(--text-dim);line-height:1.7;max-width:420px;
     <div class="kicker">SOS Método</div>
 
     <h1>
-      <span class="accent">1 hora de higienização</span>
-      paga mais que um dia inteiro de trabalho
+      Entre no mercado silencioso e conquiste
+      <span class="hl">dinheiro, agenda cheia</span> e uma
+      <span class="hl">vida sem patrão</span>
     </h1>
 
     <p class="sub">
-      Conheça o método que ensina você a <strong>higienizar sofás, colchões e estofados</strong> e cobrar de <strong>R$ 250 a R$ 450 por serviço</strong> — mesmo começando do zero.
+      Conheça o método que ensina você a transformar <strong>R$ 5,50 em produto</strong> em <strong>R$ 250 por serviço</strong> — num mercado que toda cidade precisa e quase ninguém sabe atender.
     </p>
 
     <!-- VSL -->
@@ -283,7 +277,7 @@ footer p{font-size:11.5px;color:var(--text-dim);line-height:1.7;max-width:420px;
     <!-- CTA -->
     <div id="cta" aria-hidden="true">
       <button class="btn" id="comprar" type="button">QUERO GARANTIR MINHA VAGA AGORA →</button>
-      <div class="btn-sub">12x de R$ 20,47 · <span>Garantia de 7 dias</span></div>
+      <div class="btn-sub">12x de R$ 20,47 · ou R$ 197,90 à vista<br><span>Garantia de 30 dias</span></div>
     </div>
 
     <div class="trust">
