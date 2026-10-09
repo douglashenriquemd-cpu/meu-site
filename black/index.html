@@ -529,6 +529,16 @@ footer{padding:40px 24px;text-align:center;border-top:1px solid var(--line);font
 .shield-line{position:absolute;left:8%;right:8%;bottom:16%;height:3px;border-radius:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);box-shadow:0 0 18px var(--gold)}
 .imper-label{position:absolute;bottom:22px;left:0;right:0;text-align:center;font-family:'Space Grotesk',monospace;font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--gold);text-transform:uppercase}
 .imper-text p{font-size:16.5px;line-height:1.75;margin-top:16px}
+.x3{margin:26px 0 0;background:var(--ink2);border:1px solid rgba(255,176,32,.25);border-radius:var(--r-md);padding:20px 20px 16px}
+.x3-row{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center;margin-bottom:14px}
+.x3-lbl{grid-column:1/-1;font-size:13px;font-weight:600;color:var(--text)}
+.x3-bar{height:12px;border-radius:12px;background:var(--ink3);overflow:hidden}
+.x3-bar i{display:block;height:100%;border-radius:12px;background:var(--text-dim)}
+.x3-row.on .x3-lbl{color:var(--white)}
+.x3-row.on .x3-bar i{background:linear-gradient(90deg,var(--gold-deep),var(--gold),#ffd36b);box-shadow:0 0 14px rgba(255,176,32,.5)}
+.x3-row b{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.02em;color:var(--text-dim);line-height:1;min-width:52px;text-align:right}
+.x3-row.on b{color:var(--gold)}
+.x3-note{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-dim);text-align:center}
 .imper-list{list-style:none;margin:26px 0 0;display:flex;flex-direction:column;gap:12px}
 .imper-list li{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.55;color:var(--text)}
 .imper-list .ck{color:var(--gold);font-weight:800;flex-shrink:0}
@@ -590,7 +600,7 @@ footer{padding:40px 24px;text-align:center;border-top:1px solid var(--line);font
           Só nesta Black Friday.
         </h1>
         <p class="hero-sub">
-          Você leva o método completo de higienização <strong>+ o Curso de Impermeabilização de bônus</strong> e ainda ganha <strong>2 anos de suporte individual</strong> com o Rhayner e a equipe. Um sofá de 3 lugares já paga entre <strong>R$ 250 e R$ 450</strong> — e leva menos de uma hora.
+          Você leva o método completo de higienização <strong>+ o Curso de Impermeabilização de bônus</strong> e ainda ganha <strong>2 anos de suporte individual</strong> com o Rhayner e a equipe. Um sofá de 3 lugares já paga entre <strong>R$ 250 e R$ 450</strong> — e com a impermeabilização junto, você pode <strong>até triplicar o que fatura no mesmo cliente</strong>.
         </p>
         <div class="bf-chips">
           <span class="bf-chip"><b>+</b> Impermeabilização</span>
@@ -621,7 +631,7 @@ footer{padding:40px 24px;text-align:center;border-top:1px solid var(--line);font
         <span class="sb-tag">SÓ NA BLACK</span>
         <div class="sb-big">+ R$ 197,90</div>
         <h3>Curso de Impermeabilização de bônus</h3>
-        <p>Um serviço novo pra oferecer no mesmo atendimento. Você higieniza o sofá e já sai de lá vendendo a proteção dele.</p>
+        <p>Você higieniza o sofá e já sai de lá vendendo a proteção dele. É o mesmo cliente, na mesma visita, pagando até <strong>3x mais</strong>.</p>
       </div>
       <div class="sb-card reveal">
         <span class="sb-tag">SÓ NA BLACK</span>
@@ -650,8 +660,13 @@ footer{padding:40px 24px;text-align:center;border-top:1px solid var(--line);font
       </div>
       <div class="imper-text reveal">
         <div class="eyebrow gold">Bônus exclusivo da Black</div>
-        <h2>Higienizou o sofá? Agora você também vende a proteção dele.</h2>
-        <p>Quem acabou de ver o sofá voltar a ficar limpo quer que ele <strong>continue assim</strong>. A impermeabilização é exatamente isso — e é o serviço que você oferece ali mesmo, sem precisar de cliente novo.</p>
+        <h2>O mesmo cliente pode te pagar até <span style="color:var(--gold)">3x mais</span>.</h2>
+        <p>Quem acabou de ver o sofá voltar a ficar limpo quer que ele <strong>continue assim</strong>. Aí você oferece a impermeabilização ali mesmo — e o atendimento que ia render uma higienização passa a render até o triplo, <strong>sem precisar de cliente novo</strong>.</p>
+        <div class="x3">
+          <div class="x3-row"><span class="x3-lbl">Só higienização</span><span class="x3-bar"><i style="width:33%"></i></span><b>1x</b></div>
+          <div class="x3-row on"><span class="x3-lbl">Higienização + impermeabilização</span><span class="x3-bar"><i style="width:100%"></i></span><b>até 3x</b></div>
+          <div class="x3-note">Mesmo cliente · mesma casa · mesma visita</div>
+        </div>
         <ul class="imper-list">
           <li><span class="ck">✓</span> Mais um serviço no mesmo atendimento, na mesma casa</li>
           <li><span class="ck">✓</span> Cliente que protege o sofá volta a te chamar</li>
@@ -1055,7 +1070,7 @@ footer{padding:40px 24px;text-align:center;border-top:1px solid var(--line);font
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">O que é o Curso de Impermeabilização? <span class="faq-arrow">▼</span></div>
-        <div class="faq-a"><p>É o serviço que protege o estofado depois da higienização. Você aprende a aplicar e a oferecer no mesmo atendimento, pra sair de cada casa com mais de um serviço fechado. Ele vem junto do SOS Método só nesta oferta.</p></div>
+        <div class="faq-a"><p>É o serviço que protege o estofado depois da higienização. Você aprende a aplicar e a oferecer no mesmo atendimento — e com ela você pode até triplicar o faturamento com o mesmo cliente. Ele vem junto do SOS Método só nesta oferta.</p></div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Como funcionam os 2 anos de suporte? <span class="faq-arrow">▼</span></div>
