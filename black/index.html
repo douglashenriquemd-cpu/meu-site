@@ -25,6 +25,7 @@ src="https://www.facebook.com/tr?id=424747819483688&ev=PageView&noscript=1"
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="image" href="hero-mobile.jpg" media="(max-width:768px)" fetchpriority="high">
+<link rel="preload" as="image" href="hero-desktop.jpg" media="(min-width:1200px)" fetchpriority="high">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
 <style>
@@ -558,6 +559,16 @@ footer{padding:40px 24px;text-align:center;border-top:1px solid var(--line);font
 #comprar{animation:buyPulse 2.2s ease-in-out infinite}
 @keyframes buyPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,176,32,.55)}50%{box-shadow:0 0 0 14px rgba(255,176,32,0)}}
 @media (prefers-reduced-motion: reduce){#comprar,.drop{animation:none}}
+
+/* HERO COMPUTADOR — foto do Rhayner com letreiro Black Friday à direita, texto na parte escura à esquerda */
+@media(min-width:1200px){
+  #hero{background:linear-gradient(90deg,rgba(5,7,11,.92) 0%,rgba(5,7,11,.6) 32%,rgba(5,7,11,0) 52%),var(--void) url('hero-desktop.jpg') no-repeat right center;background-size:auto,cover}
+  #hero::before{background:linear-gradient(180deg,transparent 70%,var(--void) 100%)}
+  .hero-sweep,.hero-sweep-line{display:none}
+  .bf-stamp{display:none} /* a foto já traz o letreiro BLACK FRIDAY */
+  #hero .wrap{max-width:none;margin:0;padding-left:max(28px,6vw)}
+  .hero-grid{max-width:min(580px,44vw)}
+}
 
 @media(max-width:860px){
   .sb-grid{grid-template-columns:1fr;gap:26px}
