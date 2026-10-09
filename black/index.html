@@ -24,7 +24,7 @@ src="https://www.facebook.com/tr?id=424747819483688&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="../bg-mobile.jpg" media="(max-width:768px)" fetchpriority="high">
+<link rel="preload" as="image" href="hero-mobile.jpg" media="(max-width:768px)" fetchpriority="high">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
 <style>
@@ -467,7 +467,7 @@ footer{padding:40px 24px;text-align:center;border-top:1px solid var(--line);font
     min-height:0;
     display:block;
     padding:0 0 64px;
-    background:var(--void) url('../bg-mobile.jpg') no-repeat top center;
+    background:var(--void) url('hero-mobile.jpg') no-repeat top center;
     background-size:100% auto;
   }
   #hero::before,.hero-sweep,.hero-sweep-line{display:none}
@@ -566,7 +566,8 @@ footer{padding:40px 24px;text-align:center;border-top:1px solid var(--line);font
 }
 @media(max-width:768px){
   #topbar .bf{font-size:16px}
-  .bf-stamp{justify-content:center}
+  .bf-stamp{display:none} /* a foto do hero já traz o letreiro BLACK FRIDAY */
+  #hero .wrap{padding-top:112vw} /* texto começa na parte escura da foto */
   .bf-chips{justify-content:center}
   .bonus-row{gap:12px}
   .bonus-name{font-size:13.5px}
