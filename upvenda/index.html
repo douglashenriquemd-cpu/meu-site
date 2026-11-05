@@ -86,21 +86,11 @@ h1{font-size:clamp(40px,11.8vw,56px);line-height:.98;margin:9px 0 9px}
 .assure svg{width:14px;height:14px;color:var(--green);flex:none}
 .skip{display:block;width:100%;background:none;border:0;cursor:pointer;margin-top:9px;padding:11px 8px;color:var(--dim);font:500 13.5px/1.35 Inter,sans-serif;text-decoration:underline;text-underline-offset:3px}
 
-/* Bloco da Kiwify: só visual, sempre com os dois ids pra vencer o !important do script dela.
-   Não definir display no botão: a Kiwify esconde ele com uma classe durante o Pix. */
+/* Bloco da Kiwify: só visual, com os dois ids pra garantir prioridade sobre o script dela. */
 #kiwify-upsell-OIEu1Ps{padding:0!important}
-#kiwify-upsell-OIEu1Ps .kiwify-upsell-inline{margin:0 auto!important;font-family:Inter,sans-serif!important}
-#kiwify-upsell-OIEu1Ps .kiwify-upsell-inline-field{margin-bottom:10px!important}
-#kiwify-upsell-OIEu1Ps .kiwify-upsell-inline-label{margin:0 0 5px!important;font-size:12.5px!important;font-weight:600!important;color:var(--text)!important}
-#kiwify-upsell-OIEu1Ps .kiwify-upsell-inline-select{padding:10px 40px 10px 14px!important;color:var(--white)!important;background-color:var(--ink3)!important;border:1px solid var(--line)!important;border-radius:11px!important;font-weight:600!important}
-#kiwify-upsell-OIEu1Ps .kiwify-upsell-inline-select:focus{border-color:var(--gold)!important;box-shadow:0 0 0 1px var(--gold)!important}
-#kiwify-upsell-OIEu1Ps .kiwify-upsell-inline-select option{color:#111827;background:#fff}
-#kiwify-upsell-OIEu1Ps .kiwify-upsell-inline-error{color:var(--red)!important}
-#kiwify-upsell-OIEu1Ps #kiwify-upsell-trigger-OIEu1Ps{max-width:none!important;min-height:64px!important;padding:13px 14px!important;border-radius:13px!important;background-color:var(--gold)!important;background-image:linear-gradient(180deg,var(--gold-hi),var(--gold) 55%,#f09a06)!important;color:#1a1000!important;font-family:Inter,sans-serif!important;font-size:18px!important;font-weight:800!important;line-height:1.15!important;box-shadow:0 10px 26px -9px rgba(255,176,32,.8),inset 0 1px 0 rgba(255,255,255,.5)!important}
+#kiwify-upsell-OIEu1Ps #kiwify-upsell-trigger-OIEu1Ps{display:block!important;width:100%!important;border:0!important;cursor:pointer!important;text-align:center!important;max-width:none!important;min-height:64px!important;padding:13px 14px!important;border-radius:13px!important;background-color:var(--gold)!important;background-image:linear-gradient(180deg,var(--gold-hi),var(--gold) 55%,#f09a06)!important;color:#1a1000!important;font-family:Inter,sans-serif!important;font-size:18px!important;font-weight:800!important;line-height:1.15!important;box-shadow:0 10px 26px -9px rgba(255,176,32,.8),inset 0 1px 0 rgba(255,255,255,.5)!important}
 #kiwify-upsell-OIEu1Ps #kiwify-upsell-trigger-OIEu1Ps:focus-visible{outline:3px solid var(--aqua)!important;outline-offset:3px}
-#kiwify-upsell-OIEu1Ps #kiwify-upsell-cancel-trigger-OIEu1Ps{max-width:none!important;margin:0!important;padding:13px 8px 3px!important;color:var(--dim)!important;font-family:Inter,sans-serif!important;font-size:13.5px!important;line-height:1.35!important}
-.offer.flash{animation:flash 1.3s var(--ease)}
-@keyframes flash{0%,60%{box-shadow:0 0 0 5px rgba(255,176,32,.55)}100%{box-shadow:0 0 0 0 rgba(255,176,32,0)}}
+#kiwify-upsell-OIEu1Ps #kiwify-upsell-cancel-trigger-OIEu1Ps{cursor:pointer!important;text-align:center!important;text-decoration:underline!important;text-underline-offset:3px;max-width:none!important;margin:0!important;padding:13px 8px 3px!important;color:var(--dim)!important;font-family:Inter,sans-serif!important;font-size:13.5px!important;line-height:1.35!important}
 
 /* Dores */
 .pains{list-style:none;margin-top:18px;border-top:1px solid var(--line)}
@@ -202,11 +192,11 @@ footer{border-top:1px solid var(--line);padding:18px;text-align:center;font-size
         <div class="now-price"><small>R$</small>79,90</div>
       </div>
       <span class="save">Você economiza R$ 118</span>
-      <!-- Código da Kiwify (one-click): não alterar. O visual vem do CSS "Bloco da Kiwify". -->
-      <div id="kiwify-upsell-OIEu1Ps" data-upsell-url="" data-downsell-url="" style="--kiwify-upsell-accept-bg:#2563eb;--kiwify-upsell-accept-color:#FFFFFF">
+      <!-- Bloco one-click da Kiwify, mesmo script da página antiga: o clique abre a janela de parcelas. O visual vem do CSS "Bloco da Kiwify". -->
+      <div id="kiwify-upsell-OIEu1Ps" data-upsell-url="https://sosmetodo.com.br/obrigado-2/" data-downsell-url="https://sosmetodo.com.br/obrigado-2/" style="--kiwify-upsell-accept-bg:#2563eb;--kiwify-upsell-accept-color:#FFFFFF">
           <button id="kiwify-upsell-trigger-OIEu1Ps">Sim, eu aceito essa oferta especial!</button>
           <div id="kiwify-upsell-cancel-trigger-OIEu1Ps">Não, eu gostaria de recusar essa oferta</div>
-        </div><script src="https://snippets.kiwify.com/upsell-v2/upsell.min.js"></script>
+        </div><script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
       <div class="assure">
         <span><svg><use href="#shield"/></svg>Garantia de 7 dias</span>
         <span><svg><use href="#ok"/></svg>Compra segura</span>
@@ -314,7 +304,7 @@ footer{border-top:1px solid var(--line);padding:18px;text-align:center;font-size
         <div class="now-price"><small>R$</small>79,90</div>
       </div>
       <span class="save">Você economiza R$ 118</span>
-      <button class="buy" type="button" data-go>QUERO APROVEITAR<span>Escolher as parcelas e confirmar</span></button>
+      <button class="buy" type="button" data-buy>SIM, QUERO O ARSENAL</button>
       <div class="assure">
         <span><svg><use href="#shield"/></svg>Garantia de 7 dias</span>
         <span><svg><use href="#ok"/></svg>Compra segura</span>
@@ -329,21 +319,14 @@ footer{border-top:1px solid var(--line);padding:18px;text-align:center;font-size
 <div class="sticky" id="sticky">
   <div>
     <p>Só agora<b>R$ 79,90</b></p>
-    <button class="buy" type="button" data-go>VER A OFERTA</button>
+    <button class="buy" type="button" data-buy>QUERO O ARSENAL</button>
   </div>
 </div>
 
 <script>
-/* Só existe um bloco da Kiwify, na oferta do topo. O clique nele já cobra, com as parcelas
-   escolhidas ali (o padrão dela é o maior parcelamento), então os outros botões levam até ele. */
-var oferta = document.getElementById('oferta');
-document.querySelectorAll('[data-go]').forEach(function(b){
-  b.addEventListener('click', function(){
-    oferta.scrollIntoView({behavior:'smooth', block:'center'});
-    oferta.classList.remove('flash');
-    void oferta.offsetWidth;
-    oferta.classList.add('flash');
-  });
+/* Igual à página antiga: os outros botões clicam no botão real da Kiwify, que abre a janela de parcelas */
+document.querySelectorAll('[data-buy]').forEach(function(b){
+  b.addEventListener('click', function(){ document.getElementById('kiwify-upsell-trigger-OIEu1Ps').click(); });
 });
 document.querySelectorAll('[data-skip]').forEach(function(b){
   b.addEventListener('click', function(){ document.getElementById('kiwify-upsell-cancel-trigger-OIEu1Ps').click(); });
