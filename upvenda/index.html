@@ -87,10 +87,10 @@ h1{font-size:clamp(40px,11.8vw,56px);line-height:.98;margin:9px 0 9px}
 .skip{display:block;width:100%;background:none;border:0;cursor:pointer;margin-top:9px;padding:11px 8px;color:var(--dim);font:500 13.5px/1.35 Inter,sans-serif;text-decoration:underline;text-underline-offset:3px}
 
 /* Bloco da Kiwify: só visual, com os dois ids pra garantir prioridade sobre o script dela. */
-#kiwify-upsell-OIEu1Ps{padding:0!important}
-#kiwify-upsell-OIEu1Ps #kiwify-upsell-trigger-OIEu1Ps{display:block!important;width:100%!important;border:0!important;cursor:pointer!important;text-align:center!important;max-width:none!important;min-height:64px!important;padding:13px 14px!important;border-radius:13px!important;background-color:var(--gold)!important;background-image:linear-gradient(180deg,var(--gold-hi),var(--gold) 55%,#f09a06)!important;color:#1a1000!important;font-family:Inter,sans-serif!important;font-size:18px!important;font-weight:800!important;line-height:1.15!important;box-shadow:0 10px 26px -9px rgba(255,176,32,.8),inset 0 1px 0 rgba(255,255,255,.5)!important}
-#kiwify-upsell-OIEu1Ps #kiwify-upsell-trigger-OIEu1Ps:focus-visible{outline:3px solid var(--aqua)!important;outline-offset:3px}
-#kiwify-upsell-OIEu1Ps #kiwify-upsell-cancel-trigger-OIEu1Ps{cursor:pointer!important;text-align:center!important;text-decoration:underline!important;text-underline-offset:3px;max-width:none!important;margin:0!important;padding:13px 8px 3px!important;color:var(--dim)!important;font-family:Inter,sans-serif!important;font-size:13.5px!important;line-height:1.35!important}
+#kiwify-upsell-4ZuOflX{padding:0!important}
+#kiwify-upsell-4ZuOflX #kiwify-upsell-trigger-4ZuOflX{display:block!important;width:100%!important;border:0!important;cursor:pointer!important;text-align:center!important;max-width:none!important;min-height:64px!important;padding:13px 14px!important;border-radius:13px!important;background-color:var(--gold)!important;background-image:linear-gradient(180deg,var(--gold-hi),var(--gold) 55%,#f09a06)!important;color:#1a1000!important;font-family:Inter,sans-serif!important;font-size:18px!important;font-weight:800!important;line-height:1.15!important;box-shadow:0 10px 26px -9px rgba(255,176,32,.8),inset 0 1px 0 rgba(255,255,255,.5)!important}
+#kiwify-upsell-4ZuOflX #kiwify-upsell-trigger-4ZuOflX:focus-visible{outline:3px solid var(--aqua)!important;outline-offset:3px}
+#kiwify-upsell-4ZuOflX #kiwify-upsell-cancel-trigger-4ZuOflX{cursor:pointer!important;text-align:center!important;text-decoration:underline!important;text-underline-offset:3px;max-width:none!important;margin:0!important;padding:13px 8px 3px!important;color:var(--dim)!important;font-family:Inter,sans-serif!important;font-size:13.5px!important;line-height:1.35!important}
 
 /* Dores */
 .pains{list-style:none;margin-top:18px;border-top:1px solid var(--line)}
@@ -193,9 +193,9 @@ footer{border-top:1px solid var(--line);padding:18px;text-align:center;font-size
       </div>
       <span class="save">Você economiza R$ 118</span>
       <!-- Bloco one-click da Kiwify, mesmo script da página antiga: o clique abre a janela de parcelas. O visual vem do CSS "Bloco da Kiwify". -->
-      <div id="kiwify-upsell-OIEu1Ps" data-upsell-url="https://sosmetodo.com.br/obrigado-2/" data-downsell-url="https://sosmetodo.com.br/obrigado-2/" style="--kiwify-upsell-accept-bg:#2563eb;--kiwify-upsell-accept-color:#FFFFFF">
-          <button id="kiwify-upsell-trigger-OIEu1Ps">Sim, eu aceito essa oferta especial!</button>
-          <div id="kiwify-upsell-cancel-trigger-OIEu1Ps">Não, eu gostaria de recusar essa oferta</div>
+      <div id="kiwify-upsell-4ZuOflX" data-upsell-url="https://sosmetodo.com.br/obrigado-2/" data-downsell-url="https://sosmetodo.com.br/obrigado-2/" style="--kiwify-upsell-accept-bg:#2563eb;--kiwify-upsell-accept-color:#FFFFFF">
+          <button id="kiwify-upsell-trigger-4ZuOflX">Sim, eu aceito essa oferta especial!</button>
+          <div id="kiwify-upsell-cancel-trigger-4ZuOflX">Não, eu gostaria de recusar essa oferta</div>
         </div><script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
       <div class="assure">
         <span><svg><use href="#shield"/></svg>Garantia de 7 dias</span>
@@ -326,10 +326,10 @@ footer{border-top:1px solid var(--line);padding:18px;text-align:center;font-size
 <script>
 /* Igual à página antiga: os outros botões clicam no botão real da Kiwify, que abre a janela de parcelas */
 document.querySelectorAll('[data-buy]').forEach(function(b){
-  b.addEventListener('click', function(){ document.getElementById('kiwify-upsell-trigger-OIEu1Ps').click(); });
+  b.addEventListener('click', function(){ document.getElementById('kiwify-upsell-trigger-4ZuOflX').click(); });
 });
 document.querySelectorAll('[data-skip]').forEach(function(b){
-  b.addEventListener('click', function(){ document.getElementById('kiwify-upsell-cancel-trigger-OIEu1Ps').click(); });
+  b.addEventListener('click', function(){ document.getElementById('kiwify-upsell-cancel-trigger-4ZuOflX').click(); });
 });
 
 /* Barra fixa: aparece depois da oferta do topo e some na oferta final */
