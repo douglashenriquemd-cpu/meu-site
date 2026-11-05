@@ -49,9 +49,7 @@ section{padding:56px 0}
 section.col{padding:56px 20px}
 
 /* Alerta */
-.alert{position:sticky;top:0;z-index:30;background:var(--red);color:#fff;text-align:center;padding:10px 14px 9px;animation:pisca 1s steps(1) infinite}
-@keyframes pisca{0%{background:var(--red);color:#fff}50%{background:#fff;color:var(--red)}}
-.alert svg{width:20px;height:20px;margin-right:7px;vertical-align:-3px}
+.alert{position:sticky;top:0;z-index:30;background:var(--red);color:#fff;text-align:center;padding:10px 14px 9px}
 .alert b{display:block;font:800 20px/1.05 var(--sans);font-stretch:75%;letter-spacing:.015em;text-transform:uppercase}
 .alert span{display:block;margin-top:2px;font:500 12.5px/1.25 var(--sans)}
 
@@ -135,6 +133,14 @@ section.col.last{padding-top:0}
 
 footer{border-top:1px solid var(--rule);padding:18px 20px;text-align:center;font:500 12px/1.3 var(--sans);color:var(--mute)}
 
+/* Notificação no canto */
+.toast{position:fixed;top:66px;right:10px;z-index:25;display:flex;align-items:center;gap:9px;max-width:230px;padding:9px 6px 9px 11px;background:rgba(24,24,27,.96);border:1px solid #3a3a40;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.45);font:500 12.5px/1.25 var(--sans);color:#c9c8c3;opacity:0;transform:translateX(16px);pointer-events:none;transition:opacity .3s ease-out,transform .3s ease-out}
+.toast.on{opacity:1;transform:none;pointer-events:auto}
+.toast i{flex:none;width:9px;height:9px;border-radius:50%;background:#f5b63a;animation:aviso 1.6s ease-in-out infinite}
+@keyframes aviso{50%{opacity:.25}}
+.toast b{display:block;color:#fff;font-weight:700;font-size:13.5px}
+.toast button{flex:none;width:30px;height:30px;background:none;border:0;color:var(--mute);font:500 18px/1 var(--sans);cursor:pointer}
+
 /* Barra fixa */
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--black);border-top:1px solid var(--rule);padding:9px 14px calc(11px + var(--safe));transition:transform .2s ease-out;transform:translateY(120%)}
 .sticky.on{transform:none}
@@ -142,13 +148,13 @@ footer{border-top:1px solid var(--rule);padding:18px 20px;text-align:center;font
 .sticky p{flex:none;font:500 11px/1.1 var(--sans);color:var(--mute)}
 .sticky p b{display:block;margin-top:2px;font:800 25px/1 var(--sans);font-stretch:75%;color:#fff;white-space:nowrap}
 .sticky .buy{flex:1;min-height:48px;padding:7px 8px;font-size:17px}
-@media (prefers-reduced-motion:reduce){.sticky{transition:none}.alert{animation:none}}
+@media (prefers-reduced-motion:reduce){.sticky{transition:none}.toast{transition:none}.toast i{animation:none}}
 </style>
 </head>
 <body>
 
 <div class="alert" role="status">
-  <b><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 1 21.5h22zm-1.300 7h2.600v6.500h-2.600zm0 8h2.600v2.500h-2.600z"/></svg>Atenção! Não feche esta página</b>
+  <b>Espera! Não feche esta página</b>
   <span>Se você fechar, essa oferta não volta mais</span>
 </div>
 
@@ -261,6 +267,12 @@ footer{border-top:1px solid var(--rule);padding:18px 20px;text-align:center;font
 
 <footer>SOS Método · Todos os direitos reservados</footer>
 
+<div class="toast" id="toast" role="status">
+  <i></i>
+  <div><b>Atenção</b>Não feche esta página</div>
+  <button type="button" id="toast-x" aria-label="Fechar aviso">×</button>
+</div>
+
 <div class="sticky" id="sticky">
   <div>
     <p>Só nesta página<b>R$ 79,90</b></p>
@@ -288,6 +300,23 @@ document.querySelectorAll('[data-skip]').forEach(function(b){
   },{threshold:.35});
   io.observe(document.getElementById('oferta'));
   io.observe(document.getElementById('fim'));
+})();
+
+/* Notificação: aparece 6s, some por 25s e volta, até a pessoa fechar */
+(function(){
+  var t = document.getElementById('toast'), timer;
+  function mostrar(){
+    t.classList.add('on');
+    timer = setTimeout(function(){
+      t.classList.remove('on');
+      timer = setTimeout(mostrar, 25000);
+    }, 6000);
+  }
+  timer = setTimeout(mostrar, 2500);
+  document.getElementById('toast-x').addEventListener('click', function(){
+    clearTimeout(timer);
+    t.classList.remove('on');
+  });
 })();
 </script>
 </body>
