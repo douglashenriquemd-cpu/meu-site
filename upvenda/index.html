@@ -71,6 +71,8 @@ section.col{padding:56px 20px}
 .price{font:800 82px/.92 var(--sans);font-stretch:75%;letter-spacing:-.02em;white-space:nowrap}
 .price small{font-size:34px;letter-spacing:0;margin-right:5px;vertical-align:.62em}
 .install{font:600 15px/1.2 var(--sans);margin-top:3px}
+.lose{margin-bottom:14px;padding:10px 12px;background:var(--red);color:#fff;font:600 15px/1.25 var(--sans);text-align:center}
+.lose b{display:block;font:800 20px/1.05 var(--sans);font-stretch:75%;letter-spacing:.01em;text-transform:uppercase;margin-bottom:2px}
 .buy{display:block;width:100%;min-height:62px;padding:12px;border:0;border-radius:4px;background:var(--red);color:#fff;font:800 21px/1.08 var(--sans);font-stretch:80%;letter-spacing:.01em;text-transform:uppercase;text-align:center;cursor:pointer;box-shadow:0 4px 0 #7f0d12;-webkit-tap-highlight-color:transparent}
 .buy:active{transform:translateY(3px);box-shadow:0 1px 0 #7f0d12}
 .buy:focus-visible,.skip:focus-visible{outline:3px solid #111;outline-offset:3px}
@@ -145,7 +147,7 @@ footer{border-top:1px solid var(--rule);padding:18px 20px;text-align:center;font
 
 <div class="alert" role="status">
   <b>Espera! Não feche esta página</b>
-  <span>Falta uma última decisão antes de ir pro seu acesso</span>
+  <span>Se você fechar, essa oferta de R$ 79,90 não volta mais</span>
 </div>
 
 <main>
@@ -163,6 +165,7 @@ footer{border-top:1px solid var(--rule);padding:18px 20px;text-align:center;font
         <div class="price"><small>R$</small>79,90</div>
         <div class="install">ou 12x de R$ 8,26</div>
       </div>
+      <div class="lose"><b>Fechou esta página, perdeu</b>Esse preço não aparece de novo.</div>
       <!-- Bloco one-click da Kiwify, mesmo script da página antiga: o clique abre a janela de parcelas. O visual vem do CSS "Bloco da Kiwify". -->
       <div id="kiwify-upsell-4ZuOflX" data-upsell-url="https://sosmetodo.com.br/obrigado-2/" data-downsell-url="https://sosmetodo.com.br/obrigado-2/" style="--kiwify-upsell-accept-bg:#2563eb;--kiwify-upsell-accept-color:#FFFFFF">
           <button id="kiwify-upsell-trigger-4ZuOflX">Sim! Quero o segredo do Rhayner</button>
@@ -228,7 +231,7 @@ footer{border-top:1px solid var(--rule);padding:18px 20px;text-align:center;font
     <h2>Eu sei o que você está pensando</h2>
     <dl>
       <dt>"Vou ver isso depois."</dt>
-      <dd>Essa condição existe só aqui, neste momento da sua compra. Se você sair, não vai ter essa mesma oferta por aqui de novo.</dd>
+      <dd>Não existe depois. Essa condição só aparece aqui, neste momento da sua compra. Fechou a página, a oferta acabou.</dd>
       <dt>"Primeiro eu aprendo a técnica."</dt>
       <dd>E quando aprender, vai atender quem? Quem começa já sabendo vender não perde os primeiros meses procurando cliente.</dd>
       <dt>"Agora não dá pra gastar mais."</dt>
@@ -238,7 +241,7 @@ footer{border-top:1px solid var(--rule);padding:18px 20px;text-align:center;font
 
   <section class="col last">
     <h2>Saiu daqui, acabou</h2>
-    <p>Daqui a pouco você vai estar com o curso na mão, e a pergunta vai ser uma só: de onde vem o seu primeiro cliente? Eu já te dei a resposta. A decisão é agora.</p>
+    <p>Daqui a pouco você vai estar com o curso na mão, e a pergunta vai ser uma só: de onde vem o seu primeiro cliente? Eu já te dei a resposta. Se você fechar esta página, essa oferta não volta mais. A decisão é agora.</p>
     <div class="offer" id="fim">
       <div class="label">Última chamada</div>
       <div class="prices">
@@ -246,6 +249,7 @@ footer{border-top:1px solid var(--rule);padding:18px 20px;text-align:center;font
         <div class="price"><small>R$</small>79,90</div>
         <div class="install">ou 12x de R$ 8,26</div>
       </div>
+      <div class="lose"><b>Fechou esta página, perdeu</b>Esse preço não aparece de novo.</div>
       <button class="buy" type="button" data-buy>Sim! Quero o segredo do Rhayner</button>
       <button class="skip" type="button" data-skip>Não quero. Vou continuar tentando sozinho</button>
       <div class="sure">Acesso imediato · Compra segura</div>
