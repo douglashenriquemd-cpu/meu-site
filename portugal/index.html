@@ -1202,6 +1202,9 @@ function buildCheckoutUrl(base){
     var url = new URL(base);
     var p = getTrackingParams();
     Object.keys(p).forEach(function(k){ url.searchParams.set(k, p[k]); });
+    /* Hotmart: junta as UTMs no sck, na ordem source|medium|campaign|content|term. Ela reserva o _ pro sistema, então vira - */
+    var utms = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].map(function(k){ return (p[k] || '').replace(/_/g,'-'); });
+    if(utms.join('')) url.searchParams.set('sck', utms.join('|'));
     return url.toString();
   }catch(e){ return base; }
 }
