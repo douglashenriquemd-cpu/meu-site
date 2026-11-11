@@ -436,6 +436,7 @@ section{padding:104px 0;position:relative}
    Fica no canto e sobe quando a barra de compra (#floatCta) aparece */
 #waFloat{position:fixed;right:16px;bottom:18px;z-index:210;display:flex;align-items:center;gap:10px;transition:bottom .45s var(--ease)}
 #floatCta.show ~ #waFloat{bottom:92px}
+#waFloat[hidden]{display:none}
 .wa-btn{position:relative;flex:none;width:60px;height:60px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:#fff;box-shadow:0 10px 28px rgba(0,0,0,.5),0 4px 14px rgba(37,211,102,.45);text-decoration:none;-webkit-tap-highlight-color:transparent;transition:transform .2s var(--ease)}
 .wa-btn:active{transform:scale(.94)}
 .wa-btn svg{width:32px;height:32px}
@@ -1160,7 +1161,7 @@ footer{padding:40px 24px;text-align:center;border-top:1px solid var(--line);font
 </div>
 
 <!-- BOTÃO FLUTUANTE DO WHATSAPP (precisa ficar depois do #floatCta, o CSS usa ~) -->
-<div id="waFloat">
+<div id="waFloat" hidden>
   <a class="wa-btn" id="waBtn" href="https://wa.me/5564996106649?text=Ol%C3%A1!%20Estou%20no%20site%20da%20Black%20Friday%20do%20SOS%20M%C3%A9todo%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
     <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16.02 3C8.84 3 3 8.83 3 16c0 2.3.6 4.53 1.75 6.5L3 29l6.68-1.74A13 13 0 0 0 16.02 29C23.2 29 29 23.17 29 16S23.2 3 16.02 3zm0 23.8c-2 0-3.95-.54-5.65-1.56l-.4-.24-3.96 1.03 1.06-3.86-.26-.4A10.76 10.76 0 0 1 5.2 16c0-5.96 4.86-10.8 10.82-10.8 5.97 0 10.8 4.84 10.8 10.8 0 5.96-4.83 10.8-10.8 10.8zm5.93-8.09c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.17-.22.32-.84 1.05-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.62-1.62-.97-.86-1.62-1.93-1.81-2.26-.19-.32-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.32.33-.54.11-.22.05-.4-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.4-.3.33-1.14 1.12-1.14 2.72s1.17 3.15 1.33 3.37c.16.22 2.3 3.5 5.56 4.91.78.33 1.39.53 1.86.68.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.13-.3-.21-.62-.37z"/></svg>
     <span class="wa-dot"></span>
@@ -1420,6 +1421,27 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 
 <script>
+/* WhatsApp: só aparece de segunda a sexta, das 5h às 18h59, no horário de Brasília */
+function waNoHorario(agora){
+  var p = {};
+  try{
+    new Intl.DateTimeFormat('en-US',{timeZone:'America/Sao_Paulo',weekday:'short',hour:'numeric',hourCycle:'h23'})
+      .formatToParts(agora).forEach(function(x){ p[x.type] = x.value; });
+  }catch(e){
+    p.weekday = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][agora.getDay()];
+    p.hour = agora.getHours();
+  }
+  var util = ['Mon','Tue','Wed','Thu','Fri'].indexOf(p.weekday) > -1;
+  var hora = parseInt(p.hour, 10);
+  return util && hora >= 5 && hora < 19;
+}
+(function(){
+  var wa = document.getElementById('waFloat');
+  function atualizar(){ wa.hidden = !waNoHorario(new Date()); }
+  atualizar();
+  setInterval(atualizar, 60000);
+})();
+
 /* WhatsApp: conta o clique no Pixel */
 document.getElementById('waBtn').addEventListener('click', function(){
   if(window.fbq) fbq('track', 'Contact');
