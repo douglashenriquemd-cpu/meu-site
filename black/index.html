@@ -1421,7 +1421,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 
 <script>
-/* WhatsApp: só aparece de segunda a sexta, das 5h às 18h59, no horário de Brasília */
+/* WhatsApp: só aparece de segunda a sexta, das 5h às 17h59, no horário de Brasília */
 function waNoHorario(agora){
   var p = {};
   try{
@@ -1433,7 +1433,7 @@ function waNoHorario(agora){
   }
   var util = ['Mon','Tue','Wed','Thu','Fri'].indexOf(p.weekday) > -1;
   var hora = parseInt(p.hour, 10);
-  return util && hora >= 5 && hora < 19;
+  return util && hora >= 5 && hora < 18;
 }
 (function(){
   var wa = document.getElementById('waFloat');
