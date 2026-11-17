@@ -120,7 +120,10 @@ strong{color:var(--white);font-weight:700}
   radial-gradient(circle at 80% 10%, rgba(255,176,32,.22), transparent 55%),
   repeating-linear-gradient(135deg, rgba(255,255,255,.025) 0 2px, transparent 2px 12px),
   var(--ink3);display:flex;align-items:center;justify-content:center}
-.cover.arsenal{height:200px}
+.cover.sq{height:auto;aspect-ratio:1/1}
+.cover.sq img{object-position:50% 50%}
+.cover.sq::after{display:none}
+.cover.sq + .body{padding-top:20px}
 .cover.arsenal::after{background:linear-gradient(180deg,rgba(5,7,11,0) 55%,var(--ink2) 100%)}
 .stack{position:relative;width:230px;height:130px;margin-top:22px}
 .doc{
@@ -261,13 +264,9 @@ footer{text-align:center;margin-top:30px;font-family:'Space Grotesk',monospace;f
 
   <!-- CURSO 2: ARSENAL DE VENDAS -->
   <article class="card">
-    <div class="cover arsenal">
+    <div class="cover sq">
+      <img src="arsenal.jpg" alt="Arsenal de Vendas: a estratégia de vendas do Rhayner" width="900" height="900" loading="lazy">
       <div class="badges"><span class="badge">Vendas</span><span class="badge off">−60%</span></div>
-      <div class="stack" aria-hidden="true">
-        <div class="doc"><i>ARQUIVO 02</i><b>Scripts</b><div class="ln"></div><div class="ln s"></div></div>
-        <div class="doc"><i>ARQUIVO 05</i><b>Follow-up</b><div class="ln"></div><div class="ln s"></div></div>
-        <div class="doc"><i>ARSENAL</i><b>De vendas</b><div class="ln"></div><div class="ln s"></div><div class="ln"></div></div>
-      </div>
     </div>
     <div class="body">
       <div class="kicker">Atrair e fechar clientes</div>
