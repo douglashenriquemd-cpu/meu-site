@@ -504,6 +504,11 @@ footer{padding:40px 24px;text-align:center;border-top:1px solid var(--line);font
 #topbar{background:rgba(0,0,0,.92);border-bottom:1px solid rgba(255,176,32,.35)}
 #topbar .bf{font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:.06em;color:var(--gold);line-height:1}
 #topbar .tag-off{background:var(--gold);color:#1a1100;border-color:var(--gold)}
+#topbar .alerta{display:inline-flex;align-items:center;gap:8px;color:var(--white)}
+#topbar .alerta b{color:var(--gold);font-weight:800}
+#topbar .pulso{width:8px;height:8px;border-radius:50%;background:#ff4d4d;flex-shrink:0;box-shadow:0 0 0 0 rgba(255,77,77,.6);animation:pulsoAlerta 1.8s ease-out infinite}
+@keyframes pulsoAlerta{0%{box-shadow:0 0 0 0 rgba(255,77,77,.6)}80%,100%{box-shadow:0 0 0 8px rgba(255,77,77,0)}}
+@media (prefers-reduced-motion:reduce){#topbar .pulso{animation:none}}
 
 .bf-stamp{display:inline-flex;align-items:center;gap:12px;margin-bottom:22px}
 .bf-stamp .bf-word{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,5vw,52px);letter-spacing:.04em;line-height:1;color:#000;background:linear-gradient(135deg,var(--gold),#ffd36b 50%,var(--gold-deep));padding:6px 18px 2px;border-radius:6px;transform:skewX(-8deg);box-shadow:0 10px 40px -10px rgba(255,176,32,.6)}
@@ -603,8 +608,7 @@ footer{padding:40px 24px;text-align:center;border-top:1px solid var(--line);font
 <!-- TOPBAR -->
 <div id="topbar">
   <span class="bf">BLACK FRIDAY</span>
-  <span>Oferta encerra em</span>
-  <span class="timer" id="countdown">05:00</span>
+  <span class="alerta"><i class="pulso"></i><span>Esta oferta pode sair do ar <b>a qualquer momento</b></span></span>
   <span class="tag-off">R$ 100 OFF</span>
 </div>
 
